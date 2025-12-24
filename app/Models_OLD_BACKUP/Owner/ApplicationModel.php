@@ -4,32 +4,32 @@
  * ============================================================================
  * APPLICATION MODEL
  * ============================================================================
- * 
- * Path: app/Models/Superadmin/ApplicationModel.php
- * 
+ *
+ * Path: app/Models/Owner/ApplicationModel.php
+ *
  * Deskripsi:
- * Model untuk tabel applications (workspace/aplikasi superadmin).
+ * Model untuk tabel applications (workspace/aplikasi owner).
  * Menangani CRUD aplikasi dengan soft delete support.
- * 
+ *
  * Table: applications
  * Primary Key: id
- * 
+ *
  * Fields:
  * - id, user_id, app_name, app_slug, bidang, description
  * - logo, color_theme, settings (JSON)
  * - is_active, created_at, updated_at, deleted_at
- * 
+ *
  * Features:
  * - Soft delete support
  * - JSON casting untuk settings
  * - Validation rules
  * - Before insert/update callbacks
- * 
+ *
  * Used by: Owner, Superadmin
  * ============================================================================
  */
 
-namespace App\Models\Superadmin;
+namespace App\Models\Owner;
 
 use CodeIgniter\Model;
 

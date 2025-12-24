@@ -25,7 +25,7 @@
 namespace App\Controllers\Superadmin;
 
 use App\Controllers\BaseController;
-use App\Models\Superadmin\ApplicationModel;
+use App\Models\Owner\ApplicationModel;          // ✅ FIXED: Pakai dari Owner
 use App\Models\Owner\DatasetModel;
 use App\Models\Owner\StatisticConfigModel;
 use App\Models\Superadmin\UserRoleModel;

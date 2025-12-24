@@ -1,0 +1,95 @@
+INFO - 2025-12-24 03:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:05:13 --> ErrorException: Type of App\Models\Superadmin\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Superadmin\ApplicationModel.php on line 9.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:08:15 --> ErrorException: Type of App\Models\Superadmin\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Superadmin\ApplicationModel.php on line 11.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:08:17 --> ErrorException: Type of App\Models\Superadmin\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Superadmin\ApplicationModel.php on line 11.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:08:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:08:57 --> ErrorException: Type of App\Models\Superadmin\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Superadmin\ApplicationModel.php on line 11.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:10:54 --> Error: Class "App\Models\Superadmin\ApplicationModel" not found
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Controllers\Superadmin\DashboardController.php on line 45.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Superadmin\DashboardController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-24 03:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:12:38 --> ErrorException: Type of App\Models\Owner\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\ApplicationModel.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:13:37 --> ErrorException: Type of App\Models\Owner\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\ApplicationModel.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:13:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:13:39 --> ErrorException: Type of App\Models\Owner\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\ApplicationModel.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:21:13 --> ErrorException: Type of App\Models\Owner\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\ApplicationModel.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:21:15 --> ErrorException: Type of App\Models\Owner\ApplicationModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\ApplicationModel.php on line 36.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:23:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:23:36 --> ErrorException: Type of App\Models\Owner\DatasetModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\DatasetModel.php on line 38.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:23:37 --> ErrorException: Type of App\Models\Owner\DatasetModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\DatasetModel.php on line 38.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:23:38 --> ErrorException: Type of App\Models\Owner\DatasetModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\DatasetModel.php on line 38.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:26:20 --> ErrorException: Type of App\Models\Owner\StatisticConfigModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\StatisticConfigModel.php on line 40.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:26:21 --> ErrorException: Type of App\Models\Owner\StatisticConfigModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\StatisticConfigModel.php on line 40.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-24 03:26:22 --> ErrorException: Type of App\Models\Owner\StatisticConfigModel::$casts must be array (as in class CodeIgniter\BaseModel)
+[Method: GET, Route: superadmin/dashboard]
+in APPPATH\Models\Owner\StatisticConfigModel.php on line 40.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-24 03:26:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:27:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-24 03:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

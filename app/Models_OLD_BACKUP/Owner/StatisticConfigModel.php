@@ -92,14 +92,14 @@ class StatisticConfigModel extends Model
     protected $beforeInsert   = ['generateSlug'];
     protected $beforeUpdate   = ['generateSlug'];
 
-    // protected $casts = [
-    //     'group_by_fields'       => 'json',
-    //     'filters'               => 'json',
-    //     'calculation_config'    => 'json',
-    //     'visualization_config'  => 'json',
-    //     'cached_result'         => 'json',
-    //     'is_active'             => 'boolean'
-    // ];
+    protected $casts = [
+        'group_by_fields'       => 'json',
+        'filters'               => 'json',
+        'calculation_config'    => 'json',
+        'visualization_config'  => 'json',
+        'cached_result'         => 'json',
+        'is_active'             => 'boolean'
+    ];
 
     protected function generateSlug(array $data)
     {

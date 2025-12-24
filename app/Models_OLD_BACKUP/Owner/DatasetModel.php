@@ -92,12 +92,12 @@ class DatasetModel extends Model
     protected $beforeInsert   = ['generateSlug'];
     protected $beforeUpdate   = ['generateSlug'];
 
-    // protected $casts = [
-    //     'schema_config' => 'json',
-    //     'total_rows'    => 'integer',
-    //     'total_columns' => 'integer',
-    //     'file_size'     => 'integer'
-    // ];
+    protected $casts = [
+        'schema_config' => 'json',
+        'total_rows'    => 'integer',
+        'total_columns' => 'integer',
+        'file_size'     => 'integer'
+    ];
 
     protected function generateSlug(array $data)
     {
