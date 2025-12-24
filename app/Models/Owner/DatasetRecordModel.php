@@ -59,10 +59,10 @@ class DatasetRecordModel extends Model
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
-    protected $casts = [
-        'data_json' => 'json',
-        'row_num'   => 'integer'
-    ];
+    // protected $casts = [
+    //     'data_json' => 'json',
+    //     'row_num'   => 'integer'
+    // ];
 
     public function getByDataset($datasetId, $limit = null, $offset = null)
     {

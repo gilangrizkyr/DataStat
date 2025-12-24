@@ -48,6 +48,8 @@ class LogoutController extends BaseController
      */
     private function deleteRememberMeCookie()
     {
+        helper('cookie');  // ✅ Load cookie helper
+        
         // Hapus cookie remember_token
         delete_cookie('remember_token');
         

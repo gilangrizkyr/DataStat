@@ -17,8 +17,7 @@ class LoginController extends BaseController
     {
         $this->userModel = new UserModel();
         $this->userRoleModel = new UserRoleModel();
-        $this->auditLogger = new AuditLogger();
-        helper(['form', 'url']);
+        helper(['form', 'url', 'cookie']);  // ✅ Added 'cookie' helper
     }
 
     /**
@@ -100,19 +99,38 @@ class LoginController extends BaseController
                 ->with('error', 'Email atau password salah');
         }
 
-        // Ambil role user
-        $userRole = $this->userRoleModel
-            ->select('user_roles.*, roles.role_name, roles.role_label, applications.id as app_id, applications.app_name, applications.app_slug')
-            ->join('roles', 'roles.id = user_roles.role_id')
-            ->join('applications', 'applications.id = user_roles.application_id', 'left')
-            ->where('user_roles.user_id', $user['id'])
-            ->where('user_roles.is_active', 1)
-            ->first();
+        // ✅ PERBAIKAN: Ambil role dari tabel user_roles (pivot table)
+        $db = \Config\Database::connect();
 
-        if (!$userRole) {
+        $roleData = $db->table('user_roles')
+            ->select('user_roles.*, roles.id as role_id, roles.role_name, roles.description as role_label')
+            ->join('roles', 'roles.id = user_roles.role_id')
+            ->where('user_roles.user_id', $user['id'])
+            ->get()
+            ->getRowArray();
+
+        if (!$roleData || !$roleData['role_name']) {
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Anda belum memiliki role. Silakan hubungi administrator');
+        }
+
+        // Untuk Owner dan Viewer, ambil application dari user_applications
+        $applicationData = null;
+        if (in_array($roleData['role_name'], ['owner', 'viewer'])) {
+            $applicationData = $db->table('user_applications')
+                ->select('user_applications.*, applications.app_name, applications.app_description')
+                ->join('applications', 'applications.id = user_applications.application_id')
+                ->where('user_applications.user_id', $user['id'])
+                ->where('applications.is_active', 1)
+                ->get()
+                ->getRowArray();
+
+            if (!$applicationData) {
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', 'Anda belum terdaftar di workspace manapun. Silakan hubungi administrator');
+            }
         }
 
         // Update last login
@@ -125,14 +143,13 @@ class LoginController extends BaseController
             'user_id' => $user['id'],
             'email' => $user['email'],
             'nama_lengkap' => $user['nama_lengkap'],
-            'bidang' => $user['bidang'],
-            'avatar' => $user['avatar'],
-            'role_id' => $userRole['role_id'],
-            'role_name' => $userRole['role_name'],
-            'role_label' => $userRole['role_label'],
-            'application_id' => $userRole['application_id'] ?? null,
-            'app_name' => $userRole['app_name'] ?? null,
-            'app_slug' => $userRole['app_slug'] ?? null,
+            'bidang' => $user['bidang'] ?? null,
+            'avatar' => $user['avatar'] ?? null,
+            'role_id' => $roleData['role_id'],
+            'role_name' => $roleData['role_name'],
+            'role_label' => $roleData['role_label'] ?? $roleData['role_name'],
+            'application_id' => $applicationData['application_id'] ?? null,
+            'app_name' => $applicationData['app_name'] ?? null,
             'logged_in' => true
         ];
 
@@ -159,10 +176,10 @@ class LoginController extends BaseController
     private function setRememberMeCookie($userId)
     {
         $token = bin2hex(random_bytes(32));
-        
+
         // Simpan token ke database (opsional, bisa ditambahkan tabel remember_tokens)
         // Untuk sementara simpan di cookie saja
-        
+
         set_cookie([
             'name' => 'remember_token',
             'value' => $token,
@@ -192,13 +209,13 @@ class LoginController extends BaseController
         switch ($roleName) {
             case 'superadmin':
                 return redirect()->to('/superadmin/dashboard')->with('success', 'Selamat datang, ' . session()->get('nama_lengkap'));
-            
+
             case 'owner':
                 return redirect()->to('/owner/dashboard')->with('success', 'Selamat datang, ' . session()->get('nama_lengkap'));
-            
+
             case 'viewer':
                 return redirect()->to('/viewer/dashboard')->with('success', 'Selamat datang, ' . session()->get('nama_lengkap'));
-            
+
             default:
                 return redirect()->to('/')->with('error', 'Role tidak dikenali');
         }
