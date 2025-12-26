@@ -47,15 +47,12 @@ class ViewerFilter implements FilterInterface
 
         // Check if user is viewer
         if (!$roleManager->isViewer()) {
-            return redirect()->to('/dashboard')->with('error', 'Akses ditolak. Anda tidak memiliki akses ke halaman ini.');
+            return redirect()->to('/')->with('error', 'Akses ditolak. Anda tidak memiliki akses ke halaman ini.');
         }
 
-        // Check if user has application_id in session
-        $applicationId = $session->get('application_id');
-        if (!$applicationId) {
-            return redirect()->to('/dashboard')->with('error', 'Workspace tidak ditemukan. Silakan pilih workspace.');
-        }
-
+        // Viewer can access without workspace check
+        // No need to check application_id here
+        
         // User is viewer (or owner/superadmin), continue
         return;
     }

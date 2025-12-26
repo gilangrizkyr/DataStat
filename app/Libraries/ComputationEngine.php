@@ -488,10 +488,11 @@ class ComputationEngine
     protected function calculateGrowth($config)
     {
         $targetField = $config['target_field'];
-        $periodField = $config['calculation_config']['period_field'] ?? '';
-        
+        $calculationConfig = $config['calculation_config'] ?? [];
+        $periodField = $calculationConfig['period_field'] ?? '';
+
         if (empty($periodField)) {
-            throw new \Exception("Growth memerlukan period_field");
+            throw new \Exception("Growth memerlukan period_field dalam calculation_config");
         }
 
         // Group by period
@@ -499,7 +500,7 @@ class ComputationEngine
         foreach ($this->records as $record) {
             $period = $record[$periodField] ?? 'Unknown';
             $value = floatval($record[$targetField] ?? 0);
-            
+
             if (!isset($grouped[$period])) {
                 $grouped[$period] = 0;
             }

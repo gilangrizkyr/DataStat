@@ -135,8 +135,24 @@ class StatisticViewController extends BaseController
                 ->with('error', 'Statistik tidak ditemukan atau Anda tidak memiliki akses');
         }
 
+        // Prepare config for computation engine
+        $config = $statistic;
+        // Decode JSON fields
+        if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+            $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+        }
+        if (!empty($config['filters']) && is_string($config['filters'])) {
+            $config['filters'] = json_decode($config['filters'], true);
+        }
+        if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+            $config['calculation_config'] = json_decode($config['calculation_config'], true);
+        }
+        if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+            $config['visualization_config'] = json_decode($config['visualization_config'], true);
+        }
+
         // Calculate statistik
-        $result = $this->computationEngine->calculate($statistic);
+        $result = $this->computationEngine->calculate($config);
 
         // Render visualization
         $visualization = $this->visualizationRenderer->render(
@@ -207,8 +223,24 @@ class StatisticViewController extends BaseController
                 ->with('error', 'Statistik tidak ditemukan');
         }
 
+        // Prepare config for computation engine
+        $config = $statistic;
+        // Decode JSON fields
+        if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+            $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+        }
+        if (!empty($config['filters']) && is_string($config['filters'])) {
+            $config['filters'] = json_decode($config['filters'], true);
+        }
+        if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+            $config['calculation_config'] = json_decode($config['calculation_config'], true);
+        }
+        if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+            $config['visualization_config'] = json_decode($config['visualization_config'], true);
+        }
+
         // Calculate
-        $result = $this->computationEngine->calculate($statistic);
+        $result = $this->computationEngine->calculate($config);
 
         // Generate CSV
         $filename = 'statistik-' . $statistic['stat_slug'] . '-' . date('YmdHis') . '.csv';
@@ -311,7 +343,23 @@ class StatisticViewController extends BaseController
         // Calculate all
         $results = [];
         foreach ($statistics as $stat) {
-            $result = $this->computationEngine->calculate($stat);
+            // Prepare config for computation engine
+            $config = $stat;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
+            $result = $this->computationEngine->calculate($config);
             $results[] = [
                 'statistic' => $stat,
                 'result' => $result
@@ -359,9 +407,25 @@ class StatisticViewController extends BaseController
                 ]);
             }
 
+            // Prepare config for computation engine
+            $config = $statistic;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
             // Force recalculate
             $forceRecalculate = $this->request->getGet('force') == '1';
-            $result = $this->computationEngine->calculate($statistic, $forceRecalculate);
+            $result = $this->computationEngine->calculate($config, $forceRecalculate);
 
             // Render visualization
             $visualization = $this->visualizationRenderer->render(

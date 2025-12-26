@@ -209,7 +209,6 @@ class StatisticController extends BaseController
             } else {
                 throw new \Exception('Gagal menyimpan statistik');
             }
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput()
@@ -333,7 +332,6 @@ class StatisticController extends BaseController
                 return redirect()->back()
                     ->with('error', 'Tidak ada perubahan data');
             }
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->withInput()
@@ -368,7 +366,28 @@ class StatisticController extends BaseController
         }
 
         // Hitung statistik (atau ambil dari cache)
-        $result = $this->computationEngine->calculate($statistic);
+        try {
+            // Prepare config for computation engine
+            $config = $statistic;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
+            $result = $this->computationEngine->calculate($config);
+        } catch (\Exception $e) {
+            return redirect()->to('/owner/statistics')
+                ->with('error', 'Error menghitung statistik: ' . $e->getMessage());
+        }
 
         $data = [
             'title' => 'Detail Statistik: ' . $statistic['stat_name'],
@@ -405,14 +424,29 @@ class StatisticController extends BaseController
         }
 
         try {
+            // Prepare config for computation engine
+            $config = $statistic;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
             // Calculate statistik
-            $result = $this->computationEngine->calculate($statistic);
+            $result = $this->computationEngine->calculate($config);
 
             return $this->response->setJSON([
                 'success' => true,
                 'data' => $result
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -426,10 +460,6 @@ class StatisticController extends BaseController
      */
     public function toggleActive($id)
     {
-        if (!$this->request->isAJAX()) {
-            return $this->response->setJSON(['error' => 'Invalid request']);
-        }
-
         $applicationId = session()->get('application_id');
 
         $statistic = $this->statisticModel
@@ -439,10 +469,15 @@ class StatisticController extends BaseController
             ->first();
 
         if (!$statistic) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Statistik tidak ditemukan'
-            ]);
+            if ($this->request->isAJAX()) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Statistik tidak ditemukan'
+                ]);
+            } else {
+                return redirect()->to('/owner/statistics')
+                    ->with('error', 'Statistik tidak ditemukan');
+            }
         }
 
         try {
@@ -460,23 +495,37 @@ class StatisticController extends BaseController
                     'new_status' => $newStatus
                 ]);
 
-                return $this->response->setJSON([
-                    'success' => true,
-                    'message' => 'Status statistik berhasil diubah',
-                    'new_status' => $newStatus
-                ]);
+                if ($this->request->isAJAX()) {
+                    return $this->response->setJSON([
+                        'success' => true,
+                        'message' => 'Status statistik berhasil diubah',
+                        'new_status' => $newStatus
+                    ]);
+                } else {
+                    return redirect()->to('/owner/statistics')
+                        ->with('success', 'Status statistik berhasil diubah');
+                }
             } else {
+                if ($this->request->isAJAX()) {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'message' => 'Gagal mengubah status'
+                    ]);
+                } else {
+                    return redirect()->to('/owner/statistics')
+                        ->with('error', 'Gagal mengubah status');
+                }
+            }
+        } catch (\Exception $e) {
+            if ($this->request->isAJAX()) {
                 return $this->response->setJSON([
                     'success' => false,
-                    'message' => 'Gagal mengubah status'
+                    'message' => 'Error: ' . $e->getMessage()
                 ]);
+            } else {
+                return redirect()->to('/owner/statistics')
+                    ->with('error', 'Error: ' . $e->getMessage());
             }
-
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error: ' . $e->getMessage()
-            ]);
         }
     }
 
@@ -522,7 +571,6 @@ class StatisticController extends BaseController
             } else {
                 throw new \Exception('Gagal menduplikasi statistik');
             }
-
         } catch (\Exception $e) {
             return redirect()->to('/owner/statistics')
                 ->with('error', 'Gagal duplicate statistik: ' . $e->getMessage());
@@ -554,8 +602,24 @@ class StatisticController extends BaseController
         }
 
         try {
+            // Prepare config for computation engine
+            $config = $statistic;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
             // Recalculate
-            $result = $this->computationEngine->calculate($statistic, true); // Force recalculate
+            $result = $this->computationEngine->calculate($config, true); // Force recalculate
 
             // Update cache dan last_calculated
             $this->statisticModel->update($id, [
@@ -573,7 +637,6 @@ class StatisticController extends BaseController
                 'message' => 'Statistik berhasil dihitung ulang',
                 'data' => $result
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -587,10 +650,6 @@ class StatisticController extends BaseController
      */
     public function delete($id)
     {
-        if (!$this->request->isAJAX()) {
-            return $this->response->setJSON(['error' => 'Invalid request']);
-        }
-
         $applicationId = session()->get('application_id');
 
         $statistic = $this->statisticModel
@@ -600,12 +659,28 @@ class StatisticController extends BaseController
             ->first();
 
         if (!$statistic) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Statistik tidak ditemukan'
-            ]);
+            if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Statistik tidak ditemukan'
+                ]);
+            } else {
+                return redirect()->to('/owner/statistics')
+                    ->with('error', 'Statistik tidak ditemukan');
+            }
         }
 
+        // Handle GET request - show confirmation page
+        if ($this->request->getMethod() === 'GET') {
+            $data = [
+                'title' => 'Konfirmasi Hapus Statistik',
+                'statistic' => $statistic
+            ];
+
+            return view('owner/statistics/delete', $data);
+        }
+
+        // Handle POST/AJAX request - perform deletion
         try {
             $deleted = $this->statisticModel->update($id, [
                 'deleted_at' => date('Y-m-d H:i:s')
@@ -617,22 +692,36 @@ class StatisticController extends BaseController
                     'statistic_id' => $id
                 ]);
 
-                return $this->response->setJSON([
-                    'success' => true,
-                    'message' => 'Statistik berhasil dihapus'
-                ]);
+                if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
+                    return $this->response->setJSON([
+                        'success' => true,
+                        'message' => 'Statistik berhasil dihapus'
+                    ]);
+                } else {
+                    return redirect()->to('/owner/statistics')
+                        ->with('success', 'Statistik berhasil dihapus');
+                }
             } else {
+                if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'message' => 'Gagal menghapus statistik'
+                    ]);
+                } else {
+                    return redirect()->to('/owner/statistics')
+                        ->with('error', 'Gagal menghapus statistik');
+                }
+            }
+        } catch (\Exception $e) {
+            if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
                 return $this->response->setJSON([
                     'success' => false,
-                    'message' => 'Gagal menghapus statistik'
+                    'message' => 'Error: ' . $e->getMessage()
                 ]);
+            } else {
+                return redirect()->to('/owner/statistics')
+                    ->with('error', 'Error: ' . $e->getMessage());
             }
-
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error: ' . $e->getMessage()
-            ]);
         }
     }
 

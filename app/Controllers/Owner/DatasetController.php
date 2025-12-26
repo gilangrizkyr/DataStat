@@ -44,7 +44,7 @@ class DatasetController extends BaseController
         $this->recordModel = new DatasetRecordModel();
         $this->excelReader = new ExcelReader();
         $this->schemaMapper = new SchemaMapper();
-        helper(['form', 'url', 'filesystem']);
+        helper(['form', 'url', 'filesystem', 'dataset']);
     }
 
     /**
@@ -110,6 +110,9 @@ class DatasetController extends BaseController
      */
     public function store()
     {
+        // Check if this is an AJAX request
+        $isAjax = $this->request->isAJAX();
+
         // Validasi file
         $rules = [
             'dataset_name' => [
@@ -137,6 +140,13 @@ class DatasetController extends BaseController
         ];
 
         if (!$this->validate($rules)) {
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Validasi gagal',
+                    'errors' => $this->validator->getErrors()
+                ]);
+            }
             return redirect()->back()
                 ->withInput()
                 ->with('errors', $this->validator->getErrors());
@@ -148,18 +158,18 @@ class DatasetController extends BaseController
         try {
             $applicationId = session()->get('application_id');
             $userId = session()->get('user_id');
-            
+
             $file = $this->request->getFile('excel_file');
-            
+
             // Generate unique filename
             $fileName = $file->getRandomName();
             $filePath = 'uploads/datasets/' . $applicationId . '/';
-            
+
             // Create directory if not exists
             if (!is_dir(FCPATH . $filePath)) {
                 mkdir(FCPATH . $filePath, 0755, true);
             }
-            
+
             // Move file
             $file->move(FCPATH . $filePath, $fileName);
             $fullPath = $filePath . $fileName;
@@ -167,13 +177,13 @@ class DatasetController extends BaseController
             // Generate slug
             $datasetName = $this->request->getPost('dataset_name');
             $slug = url_title($datasetName, '-', true);
-            
+
             // Ensure unique slug
             $existingSlug = $this->datasetModel
                 ->where('application_id', $applicationId)
                 ->where('dataset_slug', $slug)
                 ->first();
-            
+
             if ($existingSlug) {
                 $slug = $slug . '-' . uniqid();
             }
@@ -213,17 +223,31 @@ class DatasetController extends BaseController
                 'file_name' => $file->getName()
             ]);
 
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'Dataset berhasil diupload!',
+                    'redirect' => base_url('owner/datasets/preview/' . $datasetId)
+                ]);
+            }
+
             return redirect()->to('/owner/datasets/preview/' . $datasetId)
                 ->with('success', 'Dataset berhasil diupload! Silakan review dan konfirmasi schema.');
-
         } catch (\Exception $e) {
             $db->transRollback();
-            
+
             // Delete uploaded file if exists
             if (isset($fullPath) && file_exists(FCPATH . $fullPath)) {
                 unlink(FCPATH . $fullPath);
             }
-            
+
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Gagal upload dataset: ' . $e->getMessage()
+                ]);
+            }
+
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Gagal upload dataset: ' . $e->getMessage());
@@ -238,7 +262,7 @@ class DatasetController extends BaseController
         try {
             // Read Excel menggunakan Library
             $excelData = $this->excelReader->read($filePath);
-            
+
             if (empty($excelData['data'])) {
                 throw new \Exception('File Excel kosong atau tidak valid');
             }
@@ -277,16 +301,63 @@ class DatasetController extends BaseController
             if (!empty($batch)) {
                 $this->recordModel->insertBatch($batch);
             }
-
         } catch (\Exception $e) {
             // Update status failed
             $this->datasetModel->update($datasetId, [
                 'upload_status' => 'failed',
                 'error_message' => $e->getMessage()
             ]);
-            
+
             throw $e;
         }
+    }
+
+    /**
+     * View dataset overview
+     */
+    public function view($id)
+    {
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
+        }
+
+        $applicationId = session()->get('application_id');
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $id)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            return redirect()->to('/owner/datasets')
+                ->with('error', 'Dataset tidak ditemukan');
+        }
+
+        // Get sample data (5 rows pertama)
+        $sampleData = $this->recordModel
+            ->where('dataset_id', $id)
+            ->limit(5)
+            ->findAll();
+
+        // Parse JSON data
+        foreach ($sampleData as &$row) {
+            $row['data'] = json_decode($row['data_json'], true);
+        }
+
+        // Parse schema
+        $schema = json_decode($dataset['schema_config'], true);
+
+        $data = [
+            'title' => 'Dataset: ' . $dataset['dataset_name'],
+            'dataset' => $dataset,
+            'schema' => $schema,
+            'sample_data' => $sampleData
+        ];
+
+        return view('owner/datasets/view', $data);
     }
 
     /**
@@ -452,7 +523,7 @@ class DatasetController extends BaseController
         try {
             // Get schema dari form
             $schemaInput = $this->request->getPost('schema');
-            
+
             if (empty($schemaInput)) {
                 throw new \Exception('Schema tidak boleh kosong');
             }
@@ -486,7 +557,6 @@ class DatasetController extends BaseController
                 return redirect()->back()
                     ->with('error', 'Tidak ada perubahan pada schema');
             }
-
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Gagal update schema: ' . $e->getMessage());
@@ -544,12 +614,262 @@ class DatasetController extends BaseController
                     'message' => 'Gagal menghapus dataset'
                 ]);
             }
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Error: ' . $e->getMessage()
             ]);
+        }
+    }
+
+    /**
+     * Show all records of a dataset
+     */
+    public function records($id)
+    {
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
+        }
+
+        $applicationId = session()->get('application_id');
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $id)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            return redirect()->to('/owner/datasets')
+                ->with('error', 'Dataset tidak ditemukan');
+        }
+
+        // Pagination
+        $perPage = 100;
+        $page = $this->request->getVar('page') ?? 1;
+
+        $records = $this->recordModel
+            ->where('dataset_id', $id)
+            ->paginate($perPage, 'default', $page);
+
+        // Parse JSON data
+        foreach ($records as &$row) {
+            $row['data'] = json_decode($row['data_json'], true);
+        }
+
+        // Parse schema
+        $schema = json_decode($dataset['schema_config'], true);
+
+        $data = [
+            'title' => 'Records Dataset: ' . $dataset['dataset_name'],
+            'dataset' => $dataset,
+            'schema' => $schema,
+            'records' => $records,
+            'pager' => $this->recordModel->pager
+        ];
+
+        return view('owner/datasets/records', $data);
+    }
+
+    /**
+     * Edit dataset metadata
+     */
+    public function edit($id)
+    {
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
+        }
+
+        $applicationId = session()->get('application_id');
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $id)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            return redirect()->to('/owner/datasets')
+                ->with('error', 'Dataset tidak ditemukan');
+        }
+
+        $data = [
+            'title' => 'Edit Dataset: ' . $dataset['dataset_name'],
+            'dataset' => $dataset,
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('owner/datasets/edit', $data);
+    }
+
+    /**
+     * Update dataset metadata
+     */
+    public function update($id)
+    {
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
+        }
+
+        $applicationId = session()->get('application_id');
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $id)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            return redirect()->to('/owner/datasets')
+                ->with('error', 'Dataset tidak ditemukan');
+        }
+
+        // Validasi input
+        $rules = [
+            'dataset_name' => [
+                'rules' => 'required|min_length[3]|max_length[255]',
+                'errors' => [
+                    'required' => 'Nama dataset harus diisi',
+                    'min_length' => 'Nama dataset minimal 3 karakter',
+                    'max_length' => 'Nama dataset maksimal 255 karakter'
+                ]
+            ],
+            'description' => [
+                'rules' => 'permit_empty|max_length[1000]',
+                'errors' => [
+                    'max_length' => 'Deskripsi maksimal 1000 karakter'
+                ]
+            ]
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $this->validator->getErrors());
+        }
+
+        try {
+            $datasetName = $this->request->getPost('dataset_name');
+            $description = $this->request->getPost('description');
+
+            // Generate new slug if name changed
+            $slug = url_title($datasetName, '-', true);
+            if ($datasetName !== $dataset['dataset_name']) {
+                $existingSlug = $this->datasetModel
+                    ->where('application_id', $applicationId)
+                    ->where('dataset_slug', $slug)
+                    ->where('id !=', $id)
+                    ->first();
+
+                if ($existingSlug) {
+                    $slug = $slug . '-' . uniqid();
+                }
+            }
+
+            // Update dataset
+            $updated = $this->datasetModel->update($id, [
+                'dataset_name' => $datasetName,
+                'dataset_slug' => $slug,
+                'description' => $description,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            if ($updated) {
+                // Log aktivitas
+                $this->logActivity('update', 'datasets', 'Owner update dataset: ' . $datasetName, [
+                    'dataset_id' => $id
+                ]);
+
+                return redirect()->to('/owner/datasets/detail/' . $id)
+                    ->with('success', 'Dataset berhasil diupdate');
+            } else {
+                return redirect()->back()
+                    ->with('error', 'Tidak ada perubahan pada dataset');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Gagal update dataset: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Export dataset to Excel
+     */
+    public function export($id)
+    {
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
+        }
+
+        $applicationId = session()->get('application_id');
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $id)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            return redirect()->to('/owner/datasets')
+                ->with('error', 'Dataset tidak ditemukan');
+        }
+
+        try {
+            // Get all records
+            $records = $this->recordModel
+                ->where('dataset_id', $id)
+                ->findAll();
+
+            // Parse schema
+            $schema = json_decode($dataset['schema_config'], true);
+
+            // Create Excel file
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+
+            // Set headers
+            $col = 'A';
+            foreach ($schema as $field) {
+                $sheet->setCellValue($col . '1', $field['field_name'] ?? $field['name'] ?? 'Unknown');
+                $col++;
+            }
+
+            // Set data
+            $rowNum = 2;
+            foreach ($records as $record) {
+                $data = json_decode($record['data_json'], true);
+                $col = 'A';
+                foreach ($schema as $field) {
+                    $fieldName = $field['field_name'] ?? $field['name'] ?? '';
+                    $value = $data[$fieldName] ?? '';
+                    $sheet->setCellValue($col . $rowNum, $value);
+                    $col++;
+                }
+                $rowNum++;
+            }
+
+            // Create filename
+            $filename = $dataset['dataset_slug'] . '_export_' . date('Y-m-d_H-i-s') . '.xlsx';
+
+            // Set headers for download
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="' . $filename . '"');
+            header('Cache-Control: max-age=0');
+
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+            $writer->save('php://output');
+            exit;
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('error', 'Gagal export dataset: ' . $e->getMessage());
         }
     }
 

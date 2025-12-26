@@ -4,9 +4,9 @@
  * ============================================================================
  * OWNER STATISTIC BUILDER CONTROLLER
  * ============================================================================
- * 
+ *
  * Path: app/Controllers/Owner/StatisticBuilderController.php
- * 
+ *
  * Deskripsi:
  * Controller khusus untuk Statistic Builder Interface.
  * Fitur advanced untuk membangun statistik dengan drag-drop, filter builder,
@@ -84,7 +84,13 @@ class StatisticBuilderController extends BaseController
 
             // Get dataset
             $dataset = $this->datasetModel->find($statistic['dataset_id']);
-            $schema = json_decode($dataset['schema_config'], true);
+            if ($dataset) {
+                $statistic['dataset_name'] = $dataset['dataset_name'];
+                $schema = json_decode($dataset['schema_config'], true);
+            } else {
+                $statistic['dataset_name'] = 'Dataset tidak ditemukan';
+                $schema = [];
+            }
         }
 
         // Get available datasets
@@ -211,7 +217,6 @@ class StatisticBuilderController extends BaseController
                 'success' => true,
                 'data' => $result
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -266,7 +271,6 @@ class StatisticBuilderController extends BaseController
                     'message' => 'Konfigurasi berhasil disimpan',
                     'statistic_id' => $statisticId
                 ]);
-
             } else {
                 // Create new
                 $slug = url_title($config['stat_name'], '-', true) . '-' . uniqid();
@@ -305,7 +309,6 @@ class StatisticBuilderController extends BaseController
                     'statistic_id' => $newId
                 ]);
             }
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,

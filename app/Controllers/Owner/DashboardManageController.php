@@ -135,7 +135,6 @@ class DashboardManageController extends BaseController
 
             return redirect()->to('/owner/dashboards/manage/' . $dashboardId)
                 ->with('success', 'Dashboard berhasil dibuat');
-
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Gagal: ' . $e->getMessage());
         }
@@ -217,7 +216,6 @@ class DashboardManageController extends BaseController
             $this->logActivity('update', 'dashboards', 'Owner update dashboard', ['dashboard_id' => $id]);
 
             return redirect()->to('/owner/dashboards')->with('success', 'Dashboard berhasil diupdate');
-
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Gagal: ' . $e->getMessage());
         }
@@ -301,7 +299,6 @@ class DashboardManageController extends BaseController
                 'message' => 'Widget berhasil ditambahkan',
                 'widget_id' => $widgetId
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -338,7 +335,6 @@ class DashboardManageController extends BaseController
                 'success' => true,
                 'message' => 'Layout berhasil disimpan'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -365,7 +361,6 @@ class DashboardManageController extends BaseController
                 'success' => true,
                 'message' => 'Widget berhasil dihapus'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -379,39 +374,61 @@ class DashboardManageController extends BaseController
      */
     public function delete($id)
     {
-        if (!$this->request->isAJAX()) {
-            return $this->response->setJSON(['error' => 'Invalid request']);
-        }
-
         $applicationId = session()->get('application_id');
 
         $dashboard = $this->dashboardModel
             ->where('id', $id)
             ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
             ->first();
 
         if (!$dashboard) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Dashboard tidak ditemukan'
-            ]);
+            if ($this->request->isAJAX()) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Dashboard tidak ditemukan'
+                ]);
+            } else {
+                return redirect()->to('/owner/dashboards')
+                    ->with('error', 'Dashboard tidak ditemukan');
+            }
         }
 
+        // Handle GET request - show confirmation page
+        if ($this->request->getMethod() === 'GET') {
+            $data = [
+                'title' => 'Konfirmasi Hapus Dashboard',
+                'dashboard' => $dashboard
+            ];
+
+            return view('owner/dashboards/delete', $data);
+        }
+
+        // Handle POST/AJAX request - perform deletion
         try {
             $this->dashboardModel->update($id, ['deleted_at' => date('Y-m-d H:i:s')]);
 
-            $this->logActivity('delete', 'dashboards', 'Owner delete dashboard', ['dashboard_id' => $id]);
+            $this->logActivity('delete', 'dashboards', 'Owner delete dashboard: ' . $dashboard['dashboard_name'], ['dashboard_id' => $id]);
 
-            return $this->response->setJSON([
-                'success' => true,
-                'message' => 'Dashboard berhasil dihapus'
-            ]);
-
+            if ($this->request->isAJAX()) {
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'Dashboard berhasil dihapus'
+                ]);
+            } else {
+                return redirect()->to('/owner/dashboards')
+                    ->with('success', 'Dashboard berhasil dihapus');
+            }
         } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error: ' . $e->getMessage()
-            ]);
+            if ($this->request->isAJAX()) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Error: ' . $e->getMessage()
+                ]);
+            } else {
+                return redirect()->to('/owner/dashboards')
+                    ->with('error', 'Error: ' . $e->getMessage());
+            }
         }
     }
 

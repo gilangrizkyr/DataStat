@@ -17,6 +17,8 @@ class ApplicationModel extends Model
         'owner_id',
         'app_name',
         'app_description',
+        'bidang',
+        'settings',
         'is_active'
     ];
 

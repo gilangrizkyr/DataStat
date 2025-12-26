@@ -47,7 +47,7 @@ class DashboardController extends BaseController
         $this->statisticModel = new StatisticConfigModel();
         $this->computationEngine = new ComputationEngine();
         $this->visualizationRenderer = new VisualizationRenderer();
-        
+
         helper(['form', 'url']);
     }
 
@@ -85,7 +85,7 @@ class DashboardController extends BaseController
         }
 
         if (!$dashboard) {
-            return view('viewer/dashboard/no_dashboard', [
+            return view('viewer/dashboard/index', [
                 'title' => 'Dashboard',
                 'message' => 'Belum ada dashboard yang tersedia. Hubungi owner untuk membuat dashboard.'
             ]);
@@ -159,9 +159,25 @@ class DashboardController extends BaseController
         // Calculate semua statistik dan render visualization
         $renderedWidgets = [];
         foreach ($widgets as $widget) {
+            // Prepare config for computation engine
+            $config = $widget;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
             // Calculate statistik
-            $result = $this->computationEngine->calculate($widget);
-            
+            $result = $this->computationEngine->calculate($config);
+
             // Render visualization
             $visualization = $this->visualizationRenderer->render(
                 $widget['visualization_type'],
@@ -244,7 +260,23 @@ class DashboardController extends BaseController
         // Render widgets
         $renderedWidgets = [];
         foreach ($widgets as $widget) {
-            $result = $this->computationEngine->calculate($widget);
+            // Prepare config for computation engine
+            $config = $widget;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
+            $result = $this->computationEngine->calculate($config);
             $visualization = $this->visualizationRenderer->render(
                 $widget['visualization_type'],
                 $result,
@@ -315,7 +347,6 @@ class DashboardController extends BaseController
                 'visualization' => $visualization,
                 'last_updated' => date('Y-m-d H:i:s')
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -390,7 +421,23 @@ class DashboardController extends BaseController
         // Render widgets
         $renderedWidgets = [];
         foreach ($widgets as $widget) {
-            $result = $this->computationEngine->calculate($widget);
+            // Prepare config for computation engine
+            $config = $widget;
+            // Decode JSON fields
+            if (!empty($config['group_by_fields']) && is_string($config['group_by_fields'])) {
+                $config['group_by_fields'] = json_decode($config['group_by_fields'], true);
+            }
+            if (!empty($config['filters']) && is_string($config['filters'])) {
+                $config['filters'] = json_decode($config['filters'], true);
+            }
+            if (!empty($config['calculation_config']) && is_string($config['calculation_config'])) {
+                $config['calculation_config'] = json_decode($config['calculation_config'], true);
+            }
+            if (!empty($config['visualization_config']) && is_string($config['visualization_config'])) {
+                $config['visualization_config'] = json_decode($config['visualization_config'], true);
+            }
+
+            $result = $this->computationEngine->calculate($config);
             $visualization = $this->visualizationRenderer->render(
                 $widget['visualization_type'],
                 $result,

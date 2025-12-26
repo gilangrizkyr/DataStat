@@ -102,10 +102,21 @@ class SettingController extends BaseController
                 ]
             ];
 
-            $this->applicationModel->update($applicationId, [
+            // Prepare update data
+            $updateData = [
                 'settings' => json_encode($settings),
                 'updated_at' => date('Y-m-d H:i:s')
-            ]);
+            ];
+
+            // Add app_name and bidang if provided
+            if ($this->request->getPost('app_name')) {
+                $updateData['app_name'] = $this->request->getPost('app_name');
+            }
+            if ($this->request->getPost('bidang')) {
+                $updateData['bidang'] = $this->request->getPost('bidang');
+            }
+
+            $this->applicationModel->update($applicationId, $updateData);
 
             $this->logActivity('update', 'settings', 'Owner update workspace settings');
 

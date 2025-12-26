@@ -1,8 +1,8 @@
-<?= $this->extend('layouts/main') ?>
-
+<?= $this->extend('layouts/superadmin') ?>
 <?= $this->section('content') ?>
 
-<p>Kosong</p>
+<!-- detail users  -->
+
 
 
 <?= $this->endSection() ?>

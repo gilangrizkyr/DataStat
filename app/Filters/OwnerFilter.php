@@ -42,15 +42,12 @@ class OwnerFilter implements FilterInterface
 
         // Check if user is owner
         if (!$roleManager->isOwner()) {
-            return redirect()->to('/dashboard')->with('error', 'Akses ditolak. Anda bukan Owner workspace.');
+            return redirect()->to('/')->with('error', 'Akses ditolak. Anda bukan Owner workspace.');
         }
 
-        // Check if user has application_id in session
-        $applicationId = $session->get('application_id');
-        if (!$applicationId) {
-            return redirect()->to('/dashboard')->with('error', 'Workspace tidak ditemukan. Silakan pilih workspace.');
-        }
-
+        // Owner can access without workspace (to create one)
+        // No need to check application_id here
+        
         // User is owner, continue
         return;
     }

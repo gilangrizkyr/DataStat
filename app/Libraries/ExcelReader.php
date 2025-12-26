@@ -81,16 +81,17 @@ class ExcelReader
     protected function readHeaders()
     {
         $this->headers = [];
-        
+
         for ($col = 1; $col <= $this->totalColumns; $col++) {
-            $cellValue = $this->worksheet->getCellByColumnAndRow($col, 1)->getValue();
-            
+            $coordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col) . '1';
+            $cellValue = $this->worksheet->getCell($coordinate)->getValue();
+
             // Clean header name
             $header = trim($cellValue);
             if (empty($header)) {
                 $header = 'Column_' . $col;
             }
-            
+
             $this->headers[] = $header;
         }
     }
@@ -128,7 +129,7 @@ class ExcelReader
 
         foreach ($this->headers as $index => $header) {
             $colIndex = $index + 1;
-            
+
             $schema[] = [
                 'field_name' => $this->sanitizeFieldName($header),
                 'original_name' => $header,
@@ -149,8 +150,9 @@ class ExcelReader
         $maxRows = min($sampleRows + 1, $this->totalRows + 1); // +1 karena skip header
 
         for ($row = 2; $row <= $maxRows; $row++) {
-            $cellValue = $this->worksheet->getCellByColumnAndRow($colIndex, $row)->getValue();
-            
+            $coordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($colIndex) . $row;
+            $cellValue = $this->worksheet->getCell($coordinate)->getValue();
+
             if ($cellValue === null || $cellValue === '') {
                 continue;
             }
@@ -165,7 +167,7 @@ class ExcelReader
 
         $typeCounts = array_count_values($types);
         arsort($typeCounts);
-        
+
         return key($typeCounts);
     }
 
@@ -221,16 +223,16 @@ class ExcelReader
     {
         // Convert to lowercase
         $name = strtolower($name);
-        
+
         // Replace spaces and special chars with underscore
         $name = preg_replace('/[^a-z0-9_]/', '_', $name);
-        
+
         // Remove multiple underscores
         $name = preg_replace('/_+/', '_', $name);
-        
+
         // Trim underscores
         $name = trim($name, '_');
-        
+
         // Ensure starts with letter
         if (!preg_match('/^[a-z]/', $name)) {
             $name = 'col_' . $name;
@@ -249,13 +251,14 @@ class ExcelReader
 
         for ($row = $startRow; $row <= $endRow; $row++) {
             $rowData = [];
-            
+
             for ($col = 1; $col <= $this->totalColumns; $col++) {
-                $cellValue = $this->worksheet->getCellByColumnAndRow($col, $row)->getValue();
+                $coordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col) . $row;
+                $cellValue = $this->worksheet->getCell($coordinate)->getValue();
                 $fieldName = $this->sanitizeFieldName($this->headers[$col - 1]);
                 $rowData[$fieldName] = $cellValue;
             }
-            
+
             $data[] = $rowData;
         }
 
@@ -285,7 +288,7 @@ class ExcelReader
     public function read($filePath)
     {
         $this->load($filePath);
-        
+
         return [
             'headers' => $this->getHeaders(),
             'data' => $this->getData(),
@@ -305,12 +308,13 @@ class ExcelReader
 
         for ($row = $startRow; $row <= $endRow; $row++) {
             $rowData = [];
-            
+
             for ($col = 1; $col <= $this->totalColumns; $col++) {
-                $cellValue = $this->worksheet->getCellByColumnAndRow($col, $row)->getValue();
+                $coordinate = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col) . $row;
+                $cellValue = $this->worksheet->getCell($coordinate)->getValue();
                 $rowData[$this->headers[$col - 1]] = $cellValue;
             }
-            
+
             $data[] = $rowData;
         }
 
@@ -346,7 +350,7 @@ class ExcelReader
         try {
             $reader = new self();
             $reader->load($filePath);
-            
+
             // Check if has data
             if ($reader->getTotalRows() == 0) {
                 $errors[] = 'File Excel kosong';
