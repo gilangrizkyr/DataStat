@@ -59,6 +59,16 @@ class ProfileController extends BaseController
             'validation' => \Config\Services::validation()
         ];
 
+        // Load role-specific profile view
+        $role = session()->get('role_name') ?? 'viewer';
+        $viewPath = $role . '/profile/index';
+        $filePath = APPPATH . 'Views/' . str_replace('/', DIRECTORY_SEPARATOR, $viewPath) . '.php';
+
+        // Check if role-specific view exists, otherwise fallback to generic
+        if (file_exists($filePath)) {
+            return view($viewPath, $data);
+        }
+
         return view('profile/index', $data);
     }
 
@@ -83,6 +93,16 @@ class ProfileController extends BaseController
             'user' => $user,
             'validation' => \Config\Services::validation()
         ];
+
+        // Load role-specific edit view
+        $role = session()->get('role_name') ?? 'viewer';
+        $viewPath = $role . '/profile/edit';
+        $filePath = APPPATH . 'Views/' . str_replace('/', DIRECTORY_SEPARATOR, $viewPath) . '.php';
+
+        // Check if role-specific view exists, otherwise fallback to generic
+        if (file_exists($filePath)) {
+            return view($viewPath, $data);
+        }
 
         return view('profile/edit', $data);
     }
@@ -154,6 +174,16 @@ class ProfileController extends BaseController
             'title' => 'Ubah Password',
             'validation' => \Config\Services::validation()
         ];
+
+        // Load role-specific change password view
+        $role = session()->get('role_name') ?? 'viewer';
+        $viewPath = $role . '/profile/change_password';
+        $filePath = APPPATH . 'Views/' . str_replace('/', DIRECTORY_SEPARATOR, $viewPath) . '.php';
+
+        // Check if role-specific view exists, otherwise fallback to generic
+        if (file_exists($filePath)) {
+            return view($viewPath, $data);
+        }
 
         return view('profile/change_password', $data);
     }
@@ -312,6 +342,16 @@ class ProfileController extends BaseController
             'user' => $user,
             'validation' => \Config\Services::validation()
         ];
+
+        // Load role-specific settings view
+        $role = session()->get('role_name') ?? 'viewer';
+        $viewPath = $role . '/profile/settings';
+        $filePath = APPPATH . 'Views/' . str_replace('/', DIRECTORY_SEPARATOR, $viewPath) . '.php';
+
+        // Check if role-specific view exists, otherwise fallback to generic
+        if (file_exists($filePath)) {
+            return view($viewPath, $data);
+        }
 
         return view('profile/settings', $data);
     }

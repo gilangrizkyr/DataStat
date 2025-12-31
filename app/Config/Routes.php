@@ -238,9 +238,9 @@ $routes->group('owner', ['filter' => 'owner', 'namespace' => 'App\Controllers\Ow
     $routes->group('users', function ($routes) {
         $routes->get('/', 'UserManageController::index');
         $routes->get('invite', 'UserManageController::invite');
-        $routes->post('send-invite', 'UserManageController::sendInvite');
-        $routes->get('edit-role/(:num)', 'UserManageController::manageRoles/$1');
-        $routes->post('update-role/(:num)', 'UserManageController::updateRole/$1');
+        $routes->post('invite', 'UserManageController::sendInvite');
+        $routes->get('manage-roles/(:num)', 'UserManageController::manageRoles/$1');
+        $routes->post('manage-roles/(:num)', 'UserManageController::updateRole/$1');
         $routes->delete('remove/(:num)', 'UserManageController::remove/$1');
     });
 
@@ -268,11 +268,14 @@ $routes->group('viewer', ['filter' => 'viewer', 'namespace' => 'App\Controllers\
     $routes->get('dashboard', 'DashboardController::index');
 
     // View Dashboards
-    $routes->group('dashboards', function ($routes) {
+    $routes->group('dashboard', function ($routes) {
         $routes->get('/', 'DashboardController::index');
         $routes->get('view/(:num)', 'DashboardController::view/$1');
         $routes->get('fullscreen/(:num)', 'DashboardController::fullscreen/$1');
     });
+
+    // List all dashboards
+    $routes->get('dashboards', 'DashboardController::list');
 
     // View Statistics
     $routes->group('statistics', function ($routes) {

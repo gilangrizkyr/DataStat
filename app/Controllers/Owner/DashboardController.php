@@ -45,7 +45,7 @@ class DashboardController extends BaseController
         $this->statisticModel = new StatisticConfigModel();
         $this->dashboardModel = new DashboardModel();
         $this->logModel = new LogActivityModel();
-        
+
         helper(['form', 'url', 'text']);
     }
 
@@ -62,18 +62,17 @@ class DashboardController extends BaseController
         $userId = session()->get('user_id');
         $applicationId = session()->get('application_id');
 
-        // Jika belum punya aplikasi, redirect ke halaman buat aplikasi
+        // Jika belum punya aplikasi, tampilkan dashboard dengan setup mode
         if (!$applicationId) {
-            return redirect()->to('/owner/application/create')
-                ->with('info', 'Silakan buat aplikasi/workspace terlebih dahulu');
+            return $this->dashboardWithoutApplication();
         }
 
         // Ambil data aplikasi
         $application = $this->applicationModel->find($applicationId);
 
         if (!$application) {
-            return redirect()->to('/owner/application/create')
-                ->with('error', 'Aplikasi tidak ditemukan');
+            // Jika aplikasi tidak ditemukan, tampilkan dashboard dengan setup mode
+            return $this->dashboardWithoutApplication();
         }
 
         // Hitung statistik overview
@@ -184,8 +183,16 @@ class DashboardController extends BaseController
         $labels = [];
         $data = [];
         $colors = [
-            '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
-            '#858796', '#5a5c69', '#2e59d9', '#17a673', '#2c9faf'
+            '#4e73df',
+            '#1cc88a',
+            '#36b9cc',
+            '#f6c23e',
+            '#e74a3b',
+            '#858796',
+            '#5a5c69',
+            '#2e59d9',
+            '#17a673',
+            '#2c9faf'
         ];
 
         foreach ($types as $index => $type) {
@@ -228,17 +235,17 @@ class DashboardController extends BaseController
                 ->where('application_id', $applicationId)
                 ->where('deleted_at', null)
                 ->countAllResults(),
-            
+
             'statistics' => $this->statisticModel
                 ->where('application_id', $applicationId)
                 ->where('deleted_at', null)
                 ->countAllResults(),
-            
+
             'dashboards' => $this->dashboardModel
                 ->where('application_id', $applicationId)
                 ->where('deleted_at', null)
                 ->countAllResults(),
-            
+
             'active_statistics' => $this->statisticModel
                 ->where('application_id', $applicationId)
                 ->where('is_active', 1)
@@ -250,5 +257,28 @@ class DashboardController extends BaseController
             'success' => true,
             'data' => $stats
         ]);
+    }
+
+    /**
+     * Tampilkan dashboard untuk owner yang belum punya aplikasi
+     */
+    private function dashboardWithoutApplication()
+    {
+        $userId = session()->get('user_id');
+
+        // Cek apakah user sudah punya aplikasi yang belum aktif
+        $pendingApplications = $this->applicationModel
+            ->where('user_id', $userId)
+            ->where('is_active', 0)
+            ->findAll();
+
+        $data = [
+            'title' => 'Dashboard - Setup Your Workspace',
+            'pending_applications' => $pendingApplications,
+            'has_pending' => !empty($pendingApplications),
+            'show_setup' => true
+        ];
+
+        return view('owner/dashboard/setup', $data);
     }
 }

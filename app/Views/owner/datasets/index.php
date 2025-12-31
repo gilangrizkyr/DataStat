@@ -156,7 +156,7 @@
 
 <?= $this->endSection() ?>
 
-<?= $this->section('scripts') ?>
+<?= $this->section('js') ?>
 <script>
 // Initialize DataTable
 $(document).ready(function() {
