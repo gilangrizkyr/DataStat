@@ -100,4 +100,22 @@ class Security extends BaseConfig
      * @deprecated `Config\Cookie` $samesite property is used.
      */
     public string $samesite = 'Lax';
+
+    /**
+     * --------------------------------------------------------------------------
+     * CSRF Exclude URIs
+     * --------------------------------------------------------------------------
+     * Set to true if you want to exclude some URIs from CSRF protection.
+     * This is useful for APIs or other requests that don't need CSRF protection.
+     * You can use wildcard (*) to match multiple URIs.
+     *
+     * Example:
+     *     'csrfExcludeURIs' => [
+     *         'api/*',
+     *         'webhook/*'
+     *     ]
+     */
+    public array $csrfExcludeURIs = [
+        'owner/statistics/delete/*'
+    ];
 }

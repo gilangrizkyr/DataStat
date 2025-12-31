@@ -15,15 +15,15 @@
                 </div>
                 <div class="card-body">
                     <?php if (session()->getFlashdata('success')): ?>
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <i class="icon fas fa-check"></i> <?= session()->getFlashdata('success') ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if (session()->getFlashdata('error')): ?>
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <i class="icon fas fa-ban"></i> <?= session()->getFlashdata('error') ?>
                         </div>
                     <?php endif; ?>
@@ -119,21 +119,19 @@
 </div>
 
 <!-- Modal Konfirmasi Hapus -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Konfirmasi Hapus</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <h4 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Apakah Anda yakin ingin menghapus statistik ini?</p>
                 <p class="text-danger">Data yang sudah dihapus tidak dapat dikembalikan.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                 <button type="button" class="btn btn-danger" id="confirmDelete">Hapus</button>
             </div>
         </div>
@@ -141,48 +139,40 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        // Ensure jQuery is loaded
-        if (typeof $ === 'undefined') {
-            console.error('jQuery is not loaded');
-            return;
-        }
-
+    document.addEventListener('DOMContentLoaded', function() {
         // Delete statistic
-        $('.delete-statistic').on('click', function() {
-            const id = $(this).data('id');
-            $('#confirmDelete').data('id', id);
-            $('#deleteModal').modal('show');
+        document.querySelectorAll('.delete-statistic').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                document.getElementById('confirmDelete').setAttribute('data-id', id);
+                const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                modal.show();
+            });
         });
 
-        $('#confirmDelete').on('click', function() {
-            const id = $(this).data('id');
+        document.getElementById('confirmDelete').addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
 
-            $.ajax({
-                url: `<?= base_url('owner/statistics/delete/') ?>${id}`,
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    '<?= csrf_token() ?>': '<?= csrf_hash() ?>',
-                    '_method': 'DELETE'
-                },
-                success: function(response) {
-                    if (response.success) {
+            fetch(`<?= base_url('owner/statistics/delete/') ?>${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: '<?= csrf_token() ?>=<?= csrf_hash() ?>'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
                         location.reload();
                     } else {
-                        alert('Gagal menghapus statistik: ' + (response.message || 'Unknown error'));
+                        alert('Gagal menghapus statistik: ' + (data.message || 'Unknown error'));
                     }
-                },
-                error: function(xhr, status, error) {
-                    console.error('AJAX Error:', xhr.responseText);
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        alert('Terjadi kesalahan: ' + (response.message || 'Unknown error'));
-                    } catch (e) {
-                        alert('Terjadi kesalahan saat menghapus statistik');
-                    }
-                }
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menghapus statistik');
+                });
         });
     });
 </script>

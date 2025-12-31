@@ -165,11 +165,13 @@ $routes->group('owner', ['filter' => 'owner', 'namespace' => 'App\Controllers\Ow
         $routes->post('store', 'DatasetController::store');
         $routes->post('process-upload', 'DatasetController::processUpload');
         $routes->get('view/(:num)', 'DatasetController::view/$1');
+        $routes->get('preview/(:num)', 'DatasetController::preview/$1');
         $routes->get('detail/(:num)', 'DatasetController::detail/$1');
         $routes->get('records/(:num)', 'DatasetController::records/$1');
         $routes->get('edit/(:num)', 'DatasetController::edit/$1');
         $routes->post('update/(:num)', 'DatasetController::update/$1');
         $routes->delete('delete/(:num)', 'DatasetController::delete/$1');
+        $routes->post('delete-column', 'DatasetController::deleteColumn');
         $routes->post('update-schema/(:num)', 'DatasetController::updateSchema/$1');
         $routes->get('export/(:num)', 'DatasetController::export/$1');
         $routes->get('download-template', 'DatasetController::downloadTemplate');
@@ -184,7 +186,7 @@ $routes->group('owner', ['filter' => 'owner', 'namespace' => 'App\Controllers\Ow
         $routes->get('detail/(:num)', 'StatisticController::detail/$1'); // Alias for view
         $routes->get('edit/(:num)', 'StatisticController::edit/$1');
         $routes->post('update/(:num)', 'StatisticController::update/$1');
-        $routes->delete('delete/(:num)', 'StatisticController::delete/$1');
+        $routes->post('delete/(:num)', 'StatisticController::delete/$1');
         $routes->get('delete/(:num)', 'StatisticController::delete/$1'); // Allow GET for delete (with confirmation)
         $routes->post('toggle-active/(:num)', 'StatisticController::toggleActive/$1');
         $routes->post('calculate/(:num)', 'StatisticController::calculate/$1');

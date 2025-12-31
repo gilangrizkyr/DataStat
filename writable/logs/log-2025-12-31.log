@@ -1,0 +1,634 @@
+INFO - 2025-12-31 01:33:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:33:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:33:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:33:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:33:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:34:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:36:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:37:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:40:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-31 01:40:20 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(11, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+WARNING - 2025-12-31 01:40:20 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(11, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767145215_801cd19dc863f81ffabf.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:40:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 01:41:00 --> ErrorException: Undefined variable $columns
+[Method: GET, Route: owner/datasets/preview/11]
+in APPPATH\Views\owner\datasets\preview.php on line 30.
+ 1 APPPATH\Views\owner\datasets\preview.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $columns', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php', 30)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/datasets/preview', [], true)
+ 5 APPPATH\Controllers\Owner\DatasetController.php(408): view('owner/datasets/preview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->preview('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 01:42:01 --> ErrorException: Undefined variable $records
+[Method: GET, Route: owner/datasets/preview/11]
+in APPPATH\Views\owner\datasets\preview.php on line 59.
+ 1 APPPATH\Views\owner\datasets\preview.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php', 59)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/datasets/preview', [], true)
+ 5 APPPATH\Controllers\Owner\DatasetController.php(413): view('owner/datasets/preview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->preview('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:42:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 01:42:03 --> ErrorException: Undefined variable $records
+[Method: GET, Route: owner/datasets/preview/11]
+in APPPATH\Views\owner\datasets\preview.php on line 59.
+ 1 APPPATH\Views\owner\datasets\preview.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php', 59)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/datasets/preview', [], true)
+ 5 APPPATH\Controllers\Owner\DatasetController.php(413): view('owner/datasets/preview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->preview('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 01:42:14 --> ErrorException: Undefined variable $records
+[Method: GET, Route: owner/datasets/preview/11]
+in APPPATH\Views\owner\datasets\preview.php on line 59.
+ 1 APPPATH\Views\owner\datasets\preview.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php', 59)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/datasets/preview', [], true)
+ 5 APPPATH\Controllers\Owner\DatasetController.php(413): view('owner/datasets/preview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->preview('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 01:42:16 --> ErrorException: Undefined variable $records
+[Method: GET, Route: owner/datasets/preview/11]
+in APPPATH\Views\owner\datasets\preview.php on line 59.
+ 1 APPPATH\Views\owner\datasets\preview.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php', 59)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\datasets\\preview.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/datasets/preview', [], true)
+ 5 APPPATH\Controllers\Owner\DatasetController.php(413): view('owner/datasets/preview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->preview('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 01:42:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:43:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:43:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:45:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:47:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:47:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:47:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:47:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:48:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:48:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:48:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:52:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:53:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:54:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:54:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 01:55:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:15:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:15:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:17:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:17:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:17:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:19:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:21:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-31 02:21:02 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(12, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+WARNING - 2025-12-31 02:21:02 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(12, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147661_f7c267e79c72d4d2bc6a.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 02:21:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:21:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:21:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:22:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-31 02:23:17 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(13, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+WARNING - 2025-12-31 02:23:17 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(13, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147796_65ca26a42cc3ff50cce9.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 02:23:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-31 02:23:39 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(14, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+WARNING - 2025-12-31 02:23:39 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(14, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767147818_aec7a0f5226a991db06b.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 02:23:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:24:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:25:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:25:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:25:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:25:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:27:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:27:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:27:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:28:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:29:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 02:45:15 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: owner/datasets]
+in APPPATH\Controllers\Owner\DatasetController.php on line 26.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-31 02:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 02:45:26 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: owner/datasets]
+in APPPATH\Controllers\Owner\DatasetController.php on line 26.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-31 02:45:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 02:45:52 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: owner/datasets/view/14]
+in APPPATH\Controllers\Owner\DatasetController.php on line 26.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-12-31 02:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:48:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:48:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:52:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:52:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:53:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:55:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 02:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:02:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:07:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:24:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:24:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:42:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:42:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 03:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:01:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:01:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:03:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:05:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:17:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:19:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:20:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:24:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:24:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:24:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:26:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:26:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn called with method: POST
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: dataset_id=14, column_name=column_33
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: application_id=1
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: schema_config=[{"index":0,"original_name":"No.","field_name":"no","display_label":"No.","type":"integer","required":false,"unique":false},{"index":1,"original_name":"ID Laporan","field_name":"id_laporan","display_label":"ID Laporan","type":"integer","required":false,"unique":false},{"index":2,"original_name":"ID Proyek","field_name":"id_proyek","display_label":"ID Proyek","type":"string","required":false,"unique":false},{"index":3,"original_name":"Periode Tahap","field_name":"periode_tahap","display_label":"Periode Tahap","type":"string","required":false,"unique":false},{"index":4,"original_name":"Sektor Utama","field_name":"sektor_utama","display_label":"Sektor Utama","type":"string","required":false,"unique":false},{"index":5,"original_name":"23 Sektor","field_name":"field_23_sektor","display_label":"23 Sektor","type":"string","required":false,"unique":false},{"index":6,"original_name":"Jenis Badan Usaha","field_name":"jenis_badan_usaha","display_label":"Jenis Badan Usaha","type":"string","required":false,"unique":false},{"index":7,"original_name":"Nama Perusahaan","field_name":"nama_perusahaan","display_label":"Nama Perusahaan","type":"string","required":false,"unique":false},{"index":8,"original_name":"Kecamatan","field_name":"kecamatan","display_label":"Kecamatan","type":"string","required":false,"unique":false},{"index":9,"original_name":"Email","field_name":"email","display_label":"Email","type":"string","required":false,"unique":false},{"index":10,"original_name":"Alamat","field_name":"alamat","display_label":"Alamat","type":"string","required":false,"unique":false},{"index":11,"original_name":"Cetak Lokasi","field_name":"cetak_lokasi","display_label":"Cetak Lokasi","type":"string","required":false,"unique":false},{"index":12,"original_name":"Sektor","field_name":"sektor","display_label":"Sektor","type":"string","required":false,"unique":false},{"index":13,"original_name":"Deskripsi KBLI","field_name":"deskripsi_kbli","display_label":"Deskripsi KBLI","type":"string","required":false,"unique":false},{"index":14,"original_name":"Wilayah","field_name":"wilayah","display_label":"Wilayah","type":"string","required":false,"unique":false},{"index":15,"original_name":"Provinsi","field_name":"provinsi","display_label":"Provinsi","type":"string","required":false,"unique":false},{"index":16,"original_name":"Kabkot","field_name":"kabkot","display_label":"Kabkot","type":"string","required":false,"unique":false},{"index":17,"original_name":"No Izin","field_name":"no_izin","display_label":"No Izin","type":"integer","required":false,"unique":false},{"index":18,"original_name":"Tambahan Investasi","field_name":"tambahan_investasi","display_label":"Tambahan Investasi","type":"integer","required":false,"unique":false},{"index":19,"original_name":"Total Investasi","field_name":"total_investasi","display_label":"Total Investasi","type":"integer","required":false,"unique":false},{"index":20,"original_name":"Negara","field_name":"negara","display_label":"Negara","type":"string","required":false,"unique":false},{"index":21,"original_name":"Rencana Total Investasi","field_name":"rencana_total_investasi","display_label":"Rencana Total Investasi","type":"integer","required":false,"unique":false},{"index":22,"original_name":"Proyek","field_name":"proyek","display_label":"Proyek","type":"integer","required":false,"unique":false},{"index":23,"original_name":"TKI","field_name":"tki","display_label":"TKI","type":"integer","required":false,"unique":false},{"index":24,"original_name":"TKA","field_name":"tka","display_label":"TKA","type":"integer","required":false,"unique":false},{"index":25,"original_name":"Nama Petugas","field_name":"nama_petugas","display_label":"Nama Petugas","type":"string","required":false,"unique":false},{"index":26,"original_name":"Rencana Modal Tetap","field_name":"rencana_modal_tetap","display_label":"Rencana Modal Tetap","type":"integer","required":false,"unique":false},{"index":27,"original_name":"Keterangan Masalah","field_name":"keterangan_masalah","display_label":"Keterangan Masalah","type":"string","required":false,"unique":false},{"index":28,"original_name":"Penjelasan Modal Tetap","field_name":"penjelasan_modal_tetap","display_label":"Penjelasan Modal Tetap","type":"date","required":false,"unique":false},{"index":29,"original_name":"No Telp","field_name":"no_telp","display_label":"No Telp","type":"integer","required":false,"unique":false},{"index":30,"original_name":"PMA\/PMDN","field_name":"pma_pmdn","display_label":"PMA\/PMDN","type":"string","required":false,"unique":false},{"index":31,"original_name":"Column_32","field_name":"column_32","display_label":"Column 32","type":"string","required":false,"unique":false},{"index":32,"original_name":"Column_33","field_name":"column_33","display_label":"Column 33","type":"string","required":false,"unique":false}]
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=no
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=id_laporan
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=id_proyek
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=periode_tahap
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=sektor_utama
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=field_23_sektor
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=jenis_badan_usaha
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=nama_perusahaan
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=kecamatan
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=email
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=alamat
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=cetak_lokasi
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=sektor
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=deskripsi_kbli
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=wilayah
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=provinsi
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=kabkot
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=no_izin
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=tambahan_investasi
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=total_investasi
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=negara
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=rencana_total_investasi
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=proyek
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=tki
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=tka
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=nama_petugas
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=rencana_modal_tetap
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=keterangan_masalah
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=penjelasan_modal_tetap
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=no_telp
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=pma_pmdn
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=column_32
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: checking field=column_33
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: found column to delete=column_33
+DEBUG - 2025-12-31 04:28:35 --> deleteColumn: update result=success
+INFO - 2025-12-31 04:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:28:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn called with method: POST
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: dataset_id=14, column_name=column_32
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: application_id=1
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: schema_config=[{"index":0,"original_name":"No.","field_name":"no","display_label":"No.","type":"integer","required":false,"unique":false},{"index":1,"original_name":"ID Laporan","field_name":"id_laporan","display_label":"ID Laporan","type":"integer","required":false,"unique":false},{"index":2,"original_name":"ID Proyek","field_name":"id_proyek","display_label":"ID Proyek","type":"string","required":false,"unique":false},{"index":3,"original_name":"Periode Tahap","field_name":"periode_tahap","display_label":"Periode Tahap","type":"string","required":false,"unique":false},{"index":4,"original_name":"Sektor Utama","field_name":"sektor_utama","display_label":"Sektor Utama","type":"string","required":false,"unique":false},{"index":5,"original_name":"23 Sektor","field_name":"field_23_sektor","display_label":"23 Sektor","type":"string","required":false,"unique":false},{"index":6,"original_name":"Jenis Badan Usaha","field_name":"jenis_badan_usaha","display_label":"Jenis Badan Usaha","type":"string","required":false,"unique":false},{"index":7,"original_name":"Nama Perusahaan","field_name":"nama_perusahaan","display_label":"Nama Perusahaan","type":"string","required":false,"unique":false},{"index":8,"original_name":"Kecamatan","field_name":"kecamatan","display_label":"Kecamatan","type":"string","required":false,"unique":false},{"index":9,"original_name":"Email","field_name":"email","display_label":"Email","type":"string","required":false,"unique":false},{"index":10,"original_name":"Alamat","field_name":"alamat","display_label":"Alamat","type":"string","required":false,"unique":false},{"index":11,"original_name":"Cetak Lokasi","field_name":"cetak_lokasi","display_label":"Cetak Lokasi","type":"string","required":false,"unique":false},{"index":12,"original_name":"Sektor","field_name":"sektor","display_label":"Sektor","type":"string","required":false,"unique":false},{"index":13,"original_name":"Deskripsi KBLI","field_name":"deskripsi_kbli","display_label":"Deskripsi KBLI","type":"string","required":false,"unique":false},{"index":14,"original_name":"Wilayah","field_name":"wilayah","display_label":"Wilayah","type":"string","required":false,"unique":false},{"index":15,"original_name":"Provinsi","field_name":"provinsi","display_label":"Provinsi","type":"string","required":false,"unique":false},{"index":16,"original_name":"Kabkot","field_name":"kabkot","display_label":"Kabkot","type":"string","required":false,"unique":false},{"index":17,"original_name":"No Izin","field_name":"no_izin","display_label":"No Izin","type":"integer","required":false,"unique":false},{"index":18,"original_name":"Tambahan Investasi","field_name":"tambahan_investasi","display_label":"Tambahan Investasi","type":"integer","required":false,"unique":false},{"index":19,"original_name":"Total Investasi","field_name":"total_investasi","display_label":"Total Investasi","type":"integer","required":false,"unique":false},{"index":20,"original_name":"Negara","field_name":"negara","display_label":"Negara","type":"string","required":false,"unique":false},{"index":21,"original_name":"Rencana Total Investasi","field_name":"rencana_total_investasi","display_label":"Rencana Total Investasi","type":"integer","required":false,"unique":false},{"index":22,"original_name":"Proyek","field_name":"proyek","display_label":"Proyek","type":"integer","required":false,"unique":false},{"index":23,"original_name":"TKI","field_name":"tki","display_label":"TKI","type":"integer","required":false,"unique":false},{"index":24,"original_name":"TKA","field_name":"tka","display_label":"TKA","type":"integer","required":false,"unique":false},{"index":25,"original_name":"Nama Petugas","field_name":"nama_petugas","display_label":"Nama Petugas","type":"string","required":false,"unique":false},{"index":26,"original_name":"Rencana Modal Tetap","field_name":"rencana_modal_tetap","display_label":"Rencana Modal Tetap","type":"integer","required":false,"unique":false},{"index":27,"original_name":"Keterangan Masalah","field_name":"keterangan_masalah","display_label":"Keterangan Masalah","type":"string","required":false,"unique":false},{"index":28,"original_name":"Penjelasan Modal Tetap","field_name":"penjelasan_modal_tetap","display_label":"Penjelasan Modal Tetap","type":"date","required":false,"unique":false},{"index":29,"original_name":"No Telp","field_name":"no_telp","display_label":"No Telp","type":"integer","required":false,"unique":false},{"index":30,"original_name":"PMA\/PMDN","field_name":"pma_pmdn","display_label":"PMA\/PMDN","type":"string","required":false,"unique":false},{"index":31,"original_name":"Column_32","field_name":"column_32","display_label":"Column 32","type":"string","required":false,"unique":false}]
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=no
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=id_laporan
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=id_proyek
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=periode_tahap
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=sektor_utama
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=field_23_sektor
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=jenis_badan_usaha
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=nama_perusahaan
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=kecamatan
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=email
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=alamat
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=cetak_lokasi
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=sektor
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=deskripsi_kbli
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=wilayah
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=provinsi
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=kabkot
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=no_izin
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=tambahan_investasi
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=total_investasi
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=negara
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=rencana_total_investasi
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=proyek
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=tki
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=tka
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=nama_petugas
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=rencana_modal_tetap
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=keterangan_masalah
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=penjelasan_modal_tetap
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=no_telp
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=pma_pmdn
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: checking field=column_32
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: found column to delete=column_32
+DEBUG - 2025-12-31 04:28:47 --> deleteColumn: update result=success
+INFO - 2025-12-31 04:28:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:29:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:29:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:29:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:31:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:33:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:34:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:38:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:38:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:39:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:40:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:41:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 04:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:46:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:47:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:48:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 05:49:52 --> ErrorException: Undefined array key "joined_at"
+[Method: GET, Route: owner/users/manage-roles/3]
+in APPPATH\Views\owner\users\manage_roles.php on line 39.
+ 1 APPPATH\Views\owner\users\manage_roles.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "joined_at"', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\manage_roles.php', 39)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\manage_roles.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/users/manage_roles', [], true)
+ 5 APPPATH\Controllers\Owner\UserManageController.php(192): view('owner/users/manage_roles', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\UserManageController->manageRoles('3')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\UserManageController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 05:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 05:49:58 --> ErrorException: Undefined array key "joined_at"
+[Method: GET, Route: owner/users/manage-roles/5]
+in APPPATH\Views\owner\users\manage_roles.php on line 39.
+ 1 APPPATH\Views\owner\users\manage_roles.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "joined_at"', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\manage_roles.php', 39)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\manage_roles.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/users/manage_roles', [], true)
+ 5 APPPATH\Controllers\Owner\UserManageController.php(192): view('owner/users/manage_roles', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\UserManageController->manageRoles('5')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\UserManageController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 05:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:50:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 05:51:35 --> ErrorException: Undefined array key "role_description"
+[Method: GET, Route: owner/users/invite]
+in APPPATH\Views\owner\users\invite.php on line 68.
+ 1 APPPATH\Views\owner\users\invite.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "role_description"', 'C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\invite.php', 68)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\laragon\\www\\DataStat\\app\\Views\\owner\\users\\invite.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('owner/users/invite', [], true)
+ 5 APPPATH\Controllers\Owner\UserManageController.php(92): view('owner/users/invite', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\UserManageController->invite()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\UserManageController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 05:51:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:51:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:52:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:52:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:52:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:52:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:53:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:54:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:55:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:55:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:55:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:55:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:56:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 05:58:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

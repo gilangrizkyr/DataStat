@@ -652,6 +652,7 @@ class StatisticController extends BaseController
     {
         $applicationId = session()->get('application_id');
 
+        // Debug: Check if statistic exists
         $statistic = $this->statisticModel
             ->where('id', $id)
             ->where('application_id', $applicationId)
@@ -659,14 +660,25 @@ class StatisticController extends BaseController
             ->first();
 
         if (!$statistic) {
+            // Debug: Check if statistic exists at all
+            $exists = $this->statisticModel->find($id);
+            $message = 'Statistik tidak ditemukan';
+            if ($exists) {
+                if ($exists['application_id'] != $applicationId) {
+                    $message = 'Statistik tidak milik aplikasi ini';
+                } elseif ($exists['deleted_at'] != null) {
+                    $message = 'Statistik sudah dihapus sebelumnya';
+                }
+            }
+
             if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
                 return $this->response->setJSON([
                     'success' => false,
-                    'message' => 'Statistik tidak ditemukan'
+                    'message' => $message
                 ]);
             } else {
                 return redirect()->to('/owner/statistics')
-                    ->with('error', 'Statistik tidak ditemukan');
+                    ->with('error', $message);
             }
         }
 
@@ -682,9 +694,12 @@ class StatisticController extends BaseController
 
         // Handle POST/AJAX request - perform deletion
         try {
-            $deleted = $this->statisticModel->update($id, [
-                'deleted_at' => date('Y-m-d H:i:s')
-            ]);
+            // Use direct database update for soft delete to avoid model issues
+            $db = \Config\Database::connect();
+            $deleted = $db->table('statistic_configs')
+                ->where('id', $id)
+                ->where('application_id', $applicationId)
+                ->update(['deleted_at' => date('Y-m-d H:i:s')]);
 
             if ($deleted) {
                 // Log aktivitas
@@ -705,11 +720,11 @@ class StatisticController extends BaseController
                 if ($this->request->isAJAX() || $this->request->getMethod() === 'POST') {
                     return $this->response->setJSON([
                         'success' => false,
-                        'message' => 'Gagal menghapus statistik'
+                        'message' => 'Gagal menghapus statistik: Tidak ada data yang diupdate'
                     ]);
                 } else {
                     return redirect()->to('/owner/statistics')
-                        ->with('error', 'Gagal menghapus statistik');
+                        ->with('error', 'Gagal menghapus statistik: Tidak ada data yang diupdate');
                 }
             }
         } catch (\Exception $e) {

@@ -1,16 +1,18 @@
 <?php
 
+namespace App\Controllers\Owner;
+
 /**
  * ============================================================================
  * OWNER DATASET CONTROLLER
  * ============================================================================
- * 
+ *
  * Path: app/Controllers/Owner/DatasetController.php
- * 
+ *
  * Deskripsi:
  * Controller untuk mengelola dataset (upload, view, edit, delete).
  * Owner dapat upload file Excel, lihat preview data, edit schema, dan hapus dataset.
- * 
+ *
  * Fitur:
  * - List semua dataset
  * - Upload Excel file
@@ -18,12 +20,10 @@
  * - Edit schema (field, tipe data, label)
  * - Delete dataset
  * - Download dataset
- * 
+ *
  * Role: Owner
  * ============================================================================
  */
-
-namespace App\Controllers\Owner;
 
 use App\Controllers\BaseController;
 use App\Models\Owner\DatasetModel;
@@ -44,7 +44,7 @@ class DatasetController extends BaseController
         $this->recordModel = new DatasetRecordModel();
         $this->excelReader = new ExcelReader();
         $this->schemaMapper = new SchemaMapper();
-        helper(['form', 'url', 'filesystem', 'dataset']);
+        helper(['form', 'url', 'filesystem', 'dataset', 'security']);
     }
 
     /**
@@ -398,11 +398,16 @@ class DatasetController extends BaseController
         // Parse schema
         $schema = json_decode($dataset['schema_config'], true);
 
+        // Extract column names from schema
+        $columns = array_column($schema, 'field_name');
+
         $data = [
             'title' => 'Preview Dataset: ' . $dataset['dataset_name'],
             'dataset' => $dataset,
             'schema' => $schema,
-            'sample_data' => $sampleData
+            'records' => $sampleData,
+            'columns' => $columns,
+            'total_records' => $dataset['total_rows'] ?? 0
         ];
 
         return view('owner/datasets/preview', $data);
@@ -533,9 +538,8 @@ class DatasetController extends BaseController
             foreach ($schemaInput as $field) {
                 $schema[] = [
                     'field_name' => $field['field_name'],
-                    'field_label' => $field['field_label'],
-                    'field_type' => $field['field_type'],
-                    'is_required' => isset($field['is_required']) ? 1 : 0
+                    'type' => $field['type'],
+                    'format' => $field['format'] ?? ''
                 ];
             }
 
@@ -568,12 +572,18 @@ class DatasetController extends BaseController
      */
     public function delete($id)
     {
+        // Check if this is an AJAX request
+        $isAjax = $this->request->isAJAX();
+
         // Cek login dan role
         if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Unauthorized'
-            ]);
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Unauthorized'
+                ]);
+            }
+            return redirect()->to('/login')->with('error', 'Anda harus login sebagai owner');
         }
 
         $applicationId = session()->get('application_id');
@@ -586,10 +596,13 @@ class DatasetController extends BaseController
             ->first();
 
         if (!$dataset) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Dataset tidak ditemukan'
-            ]);
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Dataset tidak ditemukan'
+                ]);
+            }
+            return redirect()->to('/owner/datasets')->with('error', 'Dataset tidak ditemukan');
         }
 
         try {
@@ -604,21 +617,31 @@ class DatasetController extends BaseController
                     'dataset_id' => $id
                 ]);
 
-                return $this->response->setJSON([
-                    'success' => true,
-                    'message' => 'Dataset berhasil dihapus'
-                ]);
+                if ($isAjax) {
+                    return $this->response->setJSON([
+                        'success' => true,
+                        'message' => 'Dataset berhasil dihapus'
+                    ]);
+                }
+
+                return redirect()->to('/owner/datasets')->with('success', 'Dataset berhasil dihapus');
             } else {
-                return $this->response->setJSON([
-                    'success' => false,
-                    'message' => 'Gagal menghapus dataset'
-                ]);
+                if ($isAjax) {
+                    return $this->response->setJSON([
+                        'success' => false,
+                        'message' => 'Gagal menghapus dataset'
+                    ]);
+                }
+                return redirect()->to('/owner/datasets')->with('error', 'Gagal menghapus dataset');
             }
         } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'message' => 'Error: ' . $e->getMessage()
-            ]);
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Error: ' . $e->getMessage()
+                ]);
+            }
+            return redirect()->to('/owner/datasets')->with('error', 'Error: ' . $e->getMessage());
         }
     }
 
@@ -870,6 +893,144 @@ class DatasetController extends BaseController
         } catch (\Exception $e) {
             return redirect()->back()
                 ->with('error', 'Gagal export dataset: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Delete column from dataset schema
+     */
+    public function deleteColumn()
+    {
+        // Debug: Log the request
+        log_message('debug', 'deleteColumn called with method: ' . $this->request->getMethod());
+
+        // Check if this is an AJAX request
+        if (!$this->request->isAJAX()) {
+            log_message('error', 'deleteColumn: Not an AJAX request');
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Invalid request method'
+            ]);
+        }
+
+        // Cek login dan role
+        if (!session()->get('logged_in') || session()->get('role_name') !== 'owner') {
+            log_message('error', 'deleteColumn: Unauthorized - logged_in: ' . session()->get('logged_in') . ', role: ' . session()->get('role_name'));
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Unauthorized'
+            ]);
+        }
+
+        $datasetId = $this->request->getPost('dataset_id');
+        $columnName = $this->request->getPost('column_name');
+
+        log_message('debug', 'deleteColumn: dataset_id=' . $datasetId . ', column_name=' . $columnName);
+
+        if (!$datasetId || !$columnName) {
+            log_message('error', 'deleteColumn: Missing dataset_id or column_name');
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Dataset ID dan nama kolom harus diisi'
+            ]);
+        }
+
+        $applicationId = session()->get('application_id');
+        log_message('debug', 'deleteColumn: application_id=' . $applicationId);
+
+        // Get dataset
+        $dataset = $this->datasetModel
+            ->where('id', $datasetId)
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
+
+        if (!$dataset) {
+            log_message('error', 'deleteColumn: Dataset not found - id=' . $datasetId . ', app_id=' . $applicationId);
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Dataset tidak ditemukan'
+            ]);
+        }
+
+        try {
+            // Get current schema
+            $schema = json_decode($dataset['schema_config'], true);
+            log_message('debug', 'deleteColumn: schema_config=' . $dataset['schema_config']);
+
+            if (!$schema) {
+                log_message('error', 'deleteColumn: Invalid schema JSON');
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Schema dataset tidak valid'
+                ]);
+            }
+
+            // Find and remove the column from schema
+            $columnFound = false;
+            $newSchema = [];
+            foreach ($schema as $field) {
+                log_message('debug', 'deleteColumn: checking field=' . $field['field_name']);
+                if ($field['field_name'] !== $columnName) {
+                    $newSchema[] = $field;
+                } else {
+                    $columnFound = true;
+                    log_message('debug', 'deleteColumn: found column to delete=' . $columnName);
+                }
+            }
+
+            if (!$columnFound) {
+                log_message('error', 'deleteColumn: Column not found in schema - column=' . $columnName);
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Kolom tidak ditemukan dalam schema'
+                ]);
+            }
+
+            // Update all records to remove the column from JSON data
+            $records = $this->recordModel->where('dataset_id', $datasetId)->findAll();
+            foreach ($records as $record) {
+                $data = json_decode($record['data_json'], true);
+                if (isset($data[$columnName])) {
+                    unset($data[$columnName]);
+                    $this->recordModel->update($record['id'], [
+                        'data_json' => json_encode($data)
+                    ]);
+                }
+            }
+
+            // Update schema in database
+            $updated = $this->datasetModel->update($datasetId, [
+                'schema_config' => json_encode($newSchema),
+                'total_columns' => count($newSchema),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            log_message('debug', 'deleteColumn: update result=' . ($updated ? 'success' : 'failed'));
+
+            if ($updated) {
+                // Log aktivitas
+                $this->logActivity('update', 'datasets', 'Owner menghapus kolom ' . $columnName . ' dari dataset: ' . $dataset['dataset_name'], [
+                    'dataset_id' => $datasetId,
+                    'column_name' => $columnName
+                ]);
+
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'Kolom berhasil dihapus dari schema dataset'
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Gagal mengupdate schema dataset'
+                ]);
+            }
+        } catch (\Exception $e) {
+            log_message('error', 'deleteColumn: Exception - ' . $e->getMessage());
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Error: ' . $e->getMessage()
+            ]);
         }
     }
 

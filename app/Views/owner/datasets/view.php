@@ -90,11 +90,11 @@
                                         <th>Nama Kolom</th>
                                         <th>Tipe Data</th>
                                         <th>Label</th>
-                                        <th>Wajib</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($schema as $field): ?>
+                                    <?php foreach ($schema as $index => $field): ?>
                                         <tr>
                                             <td><code><?= esc($field['field_name']) ?></code></td>
                                             <td>
@@ -102,11 +102,12 @@
                                             </td>
                                             <td><?= esc($field['field_label'] ?? $field['display_label'] ?? $field['field_name']) ?></td>
                                             <td>
-                                                <?php if (isset($field['is_required']) && $field['is_required']): ?>
-                                                    <i class="fas fa-check text-success"></i>
-                                                <?php else: ?>
-                                                    <i class="fas fa-times text-muted"></i>
-                                                <?php endif; ?>
+                                                <button type="button" class="btn btn-sm btn-outline-danger delete-column"
+                                                    data-column-name="<?= esc($field['field_name']) ?>"
+                                                    data-dataset-id="<?= $dataset['id'] ?>"
+                                                    title="Hapus Kolom">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -160,4 +161,108 @@
     </div>
 
 </div>
+
+<!-- Modal for delete confirmation -->
+<div class="modal fade" id="deleteColumnModal" tabindex="-1" aria-labelledby="deleteColumnModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteColumnModalLabel">Konfirmasi Hapus Kolom</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus kolom <strong id="columnNameToDelete"></strong>?</p>
+                <div class="alert alert-warning">
+                    <small>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <strong>Perhatian:</strong> Tindakan ini akan menghapus kolom dari schema dataset dan data terkait tidak akan dapat dikembalikan.
+                    </small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteColumn">Hapus Kolom</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Wait for jQuery to be loaded
+    function initDeleteColumn() {
+        if (typeof $ === 'undefined') {
+            setTimeout(initDeleteColumn, 100);
+            return;
+        }
+
+        $(document).ready(function() {
+            let columnToDelete = '';
+            let datasetId = '';
+
+            // Handle delete column button click
+            $('.delete-column').on('click', function() {
+                columnToDelete = $(this).data('column-name');
+                datasetId = $(this).data('dataset-id');
+
+                $('#columnNameToDelete').text(columnToDelete);
+                $('#deleteColumnModal').modal('show');
+            });
+
+            // Handle confirm delete
+            $('#confirmDeleteColumn').on('click', function() {
+                if (!columnToDelete || !datasetId) {
+                    return;
+                }
+
+                // Show loading state
+                $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Menghapus...');
+
+                // Prepare data with CSRF token
+                var data = {
+                    dataset_id: datasetId,
+                    column_name: columnToDelete
+                };
+                data['<?= csrf_token() ?>'] = $('meta[name="csrf-token"]').attr('content');
+
+                // Send AJAX request
+                $.ajax({
+                    url: '<?= base_url("owner/datasets/delete-column") ?>',
+                    type: 'POST',
+                    data: data,
+                    success: function(response) {
+                        if (response.success) {
+                            // Show success message
+                            toastr.success(response.message || 'Kolom berhasil dihapus');
+
+                            // Reload page after short delay
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1500);
+                        } else {
+                            toastr.error(response.message || 'Gagal menghapus kolom');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        console.error('Response:', xhr.responseText);
+                        toastr.error('Terjadi kesalahan saat menghapus kolom');
+                    },
+                    complete: function() {
+                        // Reset button state
+                        $('#confirmDeleteColumn').prop('disabled', false).html('Hapus Kolom');
+                        $('#deleteColumnModal').modal('hide');
+                    }
+                });
+            });
+        });
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDeleteColumn);
+    } else {
+        initDeleteColumn();
+    }
+</script>
+
 <?= $this->endSection() ?>

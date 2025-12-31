@@ -43,7 +43,7 @@ class DatasetModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    
+
     protected $allowedFields    = [
         'application_id',
         'dataset_name',
@@ -59,7 +59,8 @@ class DatasetModel extends Model
         'total_columns',
         'uploaded_by',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'deleted_at'
     ];
 
     protected $useTimestamps = false;
@@ -103,16 +104,16 @@ class DatasetModel extends Model
     {
         if (isset($data['data']['dataset_name']) && empty($data['data']['dataset_slug'])) {
             $slug = url_title($data['data']['dataset_name'], '-', true);
-            
+
             $existingSlug = $this->where('dataset_slug', $slug)
-                                 ->where('application_id', $data['data']['application_id'] ?? null)
-                                 ->where('deleted_at', null)
-                                 ->first();
-            
+                ->where('application_id', $data['data']['application_id'] ?? null)
+                ->where('deleted_at', null)
+                ->first();
+
             if ($existingSlug) {
                 $slug = $slug . '-' . uniqid();
             }
-            
+
             $data['data']['dataset_slug'] = $slug;
         }
 
@@ -122,50 +123,50 @@ class DatasetModel extends Model
     public function getByApplication($applicationId, $status = null)
     {
         $builder = $this->where('application_id', $applicationId)
-                        ->where('deleted_at', null);
-        
+            ->where('deleted_at', null);
+
         if ($status) {
             $builder->where('upload_status', $status);
         }
-        
+
         return $builder->orderBy('created_at', 'DESC')->findAll();
     }
 
     public function getBySlug($slug, $applicationId)
     {
         return $this->where('dataset_slug', $slug)
-                    ->where('application_id', $applicationId)
-                    ->where('deleted_at', null)
-                    ->first();
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
     }
 
     public function getCompleted($applicationId = null)
     {
         $builder = $this->where('upload_status', 'completed')
-                        ->where('deleted_at', null);
-        
+            ->where('deleted_at', null);
+
         if ($applicationId) {
             $builder->where('application_id', $applicationId);
         }
-        
+
         return $builder->findAll();
     }
 
     public function getWithUploader($datasetId = null, $applicationId = null)
     {
         $builder = $this->select('datasets.*, users.nama_lengkap as uploader_name')
-                        ->join('users', 'users.id = datasets.uploaded_by')
-                        ->where('datasets.deleted_at', null);
-        
+            ->join('users', 'users.id = datasets.uploaded_by')
+            ->where('datasets.deleted_at', null);
+
         if ($datasetId) {
             $builder->where('datasets.id', $datasetId);
             return $builder->first();
         }
-        
+
         if ($applicationId) {
             $builder->where('datasets.application_id', $applicationId);
         }
-        
+
         return $builder->orderBy('datasets.created_at', 'DESC')->findAll();
     }
 
@@ -175,11 +176,11 @@ class DatasetModel extends Model
             'upload_status' => $status,
             'updated_at' => date('Y-m-d H:i:s')
         ];
-        
+
         if ($errorMessage) {
             $updateData['error_message'] = $errorMessage;
         }
-        
+
         return $this->update($datasetId, $updateData);
     }
 
@@ -195,18 +196,18 @@ class DatasetModel extends Model
     public function search($keyword, $applicationId)
     {
         return $this->where('application_id', $applicationId)
-                    ->where('deleted_at', null)
-                    ->groupStart()
-                        ->like('dataset_name', $keyword)
-                        ->orLike('description', $keyword)
-                    ->groupEnd()
-                    ->findAll();
+            ->where('deleted_at', null)
+            ->groupStart()
+            ->like('dataset_name', $keyword)
+            ->orLike('description', $keyword)
+            ->groupEnd()
+            ->findAll();
     }
 
     public function getStats($applicationId)
     {
         $db = \Config\Database::connect();
-        
+
         $query = $db->query("
             SELECT 
                 COUNT(*) as total_datasets,
@@ -218,7 +219,7 @@ class DatasetModel extends Model
             FROM datasets
             WHERE application_id = ? AND deleted_at IS NULL
         ", [$applicationId]);
-        
+
         return $query->getRowArray();
     }
 
@@ -226,20 +227,19 @@ class DatasetModel extends Model
     {
         $db = \Config\Database::connect();
         $db->transStart();
-        
+
         try {
             // Soft delete dataset
             $this->update($datasetId, ['deleted_at' => date('Y-m-d H:i:s')]);
-            
+
             // Delete records (hard delete karena data besar)
             $db->table('dataset_records')
-               ->where('dataset_id', $datasetId)
-               ->delete();
-            
+                ->where('dataset_id', $datasetId)
+                ->delete();
+
             $db->transComplete();
-            
+
             return $db->transStatus();
-            
         } catch (\Exception $e) {
             $db->transRollback();
             return false;
