@@ -632,3 +632,265 @@ INFO - 2025-12-31 05:58:20 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-12-31 05:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-12-31 05:58:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-12-31 05:58:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:00:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:03:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:27:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 06:29:23 --> ParseError: syntax error, unexpected single-quoted string "success"
+[Method: GET, Route: owner/datasets]
+in APPPATH\Controllers\Owner\DatasetController.php on line 187.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\DataStat\\app\\Controllers\\Owner\\DatasetController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Owner\\DatasetController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Owner\\DatasetController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Owner\\DatasetController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 06:29:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 06:29:26 --> ParseError: syntax error, unexpected single-quoted string "success"
+[Method: GET, Route: owner/datasets]
+in APPPATH\Controllers\Owner\DatasetController.php on line 187.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\DataStat\\app\\Controllers\\Owner\\DatasetController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Owner\\DatasetController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Owner\\DatasetController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Owner\\DatasetController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 06:32:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-31 06:32:32 --> ParseError: Unclosed '{' on line 33
+[Method: GET, Route: owner/datasets]
+in APPPATH\Controllers\Owner\DatasetController.php on line 302.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\DataStat\\app\\Controllers\\Owner\\DatasetController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Owner\\DatasetController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Owner\\DatasetController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Owner\\DatasetController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 06:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:32:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:33:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:34:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-12-31 06:35:15 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(15, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+WARNING - 2025-12-31 06:35:15 --> [DEPRECATED] trim(): Passing null to parameter #1 ($string) of type string is deprecated in APPPATH\Libraries\ExcelReader.php on line 90.
+ 1 APPPATH\Libraries\ExcelReader.php(90): trim(null)
+ 2 APPPATH\Libraries\ExcelReader.php(70): App\Libraries\ExcelReader->readHeaders()
+ 3 APPPATH\Libraries\ExcelReader.php(290): App\Libraries\ExcelReader->load('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 4 APPPATH\Controllers\Owner\DatasetController.php(264): App\Libraries\ExcelReader->read('C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 5 APPPATH\Controllers\Owner\DatasetController.php(212): App\Controllers\Owner\DatasetController->processExcelFile(15, 'C:\\laragon\\www\\DataStat\\public\\uploads/datasets/1/1767162910_395b3eb04ddb4c373b54.xlsx')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Owner\DatasetController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Owner\DatasetController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\DataStat\\public\\index.php')
+INFO - 2025-12-31 06:35:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn called with method: POST
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: dataset_id=15, column_name=column_32
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: application_id=1
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: schema_config=[{"index":0,"original_name":"No.","field_name":"no","display_label":"No.","type":"integer","required":false,"unique":false},{"index":1,"original_name":"ID Laporan","field_name":"id_laporan","display_label":"ID Laporan","type":"integer","required":false,"unique":false},{"index":2,"original_name":"ID Proyek","field_name":"id_proyek","display_label":"ID Proyek","type":"string","required":false,"unique":false},{"index":3,"original_name":"Periode Tahap","field_name":"periode_tahap","display_label":"Periode Tahap","type":"string","required":false,"unique":false},{"index":4,"original_name":"Sektor Utama","field_name":"sektor_utama","display_label":"Sektor Utama","type":"string","required":false,"unique":false},{"index":5,"original_name":"23 Sektor","field_name":"field_23_sektor","display_label":"23 Sektor","type":"string","required":false,"unique":false},{"index":6,"original_name":"Jenis Badan Usaha","field_name":"jenis_badan_usaha","display_label":"Jenis Badan Usaha","type":"string","required":false,"unique":false},{"index":7,"original_name":"Nama Perusahaan","field_name":"nama_perusahaan","display_label":"Nama Perusahaan","type":"string","required":false,"unique":false},{"index":8,"original_name":"Kecamatan","field_name":"kecamatan","display_label":"Kecamatan","type":"string","required":false,"unique":false},{"index":9,"original_name":"Email","field_name":"email","display_label":"Email","type":"string","required":false,"unique":false},{"index":10,"original_name":"Alamat","field_name":"alamat","display_label":"Alamat","type":"string","required":false,"unique":false},{"index":11,"original_name":"Cetak Lokasi","field_name":"cetak_lokasi","display_label":"Cetak Lokasi","type":"string","required":false,"unique":false},{"index":12,"original_name":"Sektor","field_name":"sektor","display_label":"Sektor","type":"string","required":false,"unique":false},{"index":13,"original_name":"Deskripsi KBLI","field_name":"deskripsi_kbli","display_label":"Deskripsi KBLI","type":"string","required":false,"unique":false},{"index":14,"original_name":"Wilayah","field_name":"wilayah","display_label":"Wilayah","type":"string","required":false,"unique":false},{"index":15,"original_name":"Provinsi","field_name":"provinsi","display_label":"Provinsi","type":"string","required":false,"unique":false},{"index":16,"original_name":"Kabkot","field_name":"kabkot","display_label":"Kabkot","type":"string","required":false,"unique":false},{"index":17,"original_name":"No Izin","field_name":"no_izin","display_label":"No Izin","type":"integer","required":false,"unique":false},{"index":18,"original_name":"Tambahan Investasi","field_name":"tambahan_investasi","display_label":"Tambahan Investasi","type":"integer","required":false,"unique":false},{"index":19,"original_name":"Total Investasi","field_name":"total_investasi","display_label":"Total Investasi","type":"integer","required":false,"unique":false},{"index":20,"original_name":"Negara","field_name":"negara","display_label":"Negara","type":"string","required":false,"unique":false},{"index":21,"original_name":"Rencana Total Investasi","field_name":"rencana_total_investasi","display_label":"Rencana Total Investasi","type":"integer","required":false,"unique":false},{"index":22,"original_name":"Proyek","field_name":"proyek","display_label":"Proyek","type":"integer","required":false,"unique":false},{"index":23,"original_name":"TKI","field_name":"tki","display_label":"TKI","type":"integer","required":false,"unique":false},{"index":24,"original_name":"TKA","field_name":"tka","display_label":"TKA","type":"integer","required":false,"unique":false},{"index":25,"original_name":"Nama Petugas","field_name":"nama_petugas","display_label":"Nama Petugas","type":"string","required":false,"unique":false},{"index":26,"original_name":"Rencana Modal Tetap","field_name":"rencana_modal_tetap","display_label":"Rencana Modal Tetap","type":"integer","required":false,"unique":false},{"index":27,"original_name":"Keterangan Masalah","field_name":"keterangan_masalah","display_label":"Keterangan Masalah","type":"string","required":false,"unique":false},{"index":28,"original_name":"Penjelasan Modal Tetap","field_name":"penjelasan_modal_tetap","display_label":"Penjelasan Modal Tetap","type":"string","required":false,"unique":false},{"index":29,"original_name":"No Telp","field_name":"no_telp","display_label":"No Telp","type":"integer","required":false,"unique":false},{"index":30,"original_name":"PMA\/PMDN","field_name":"pma_pmdn","display_label":"PMA\/PMDN","type":"string","required":false,"unique":false},{"index":31,"original_name":"Column_32","field_name":"column_32","display_label":"Column 32","type":"string","required":false,"unique":false},{"index":32,"original_name":"Column_33","field_name":"column_33","display_label":"Column 33","type":"string","required":false,"unique":false}]
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=no
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=id_laporan
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=id_proyek
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=periode_tahap
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=sektor_utama
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=field_23_sektor
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=jenis_badan_usaha
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=nama_perusahaan
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=kecamatan
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=email
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=alamat
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=cetak_lokasi
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=sektor
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=deskripsi_kbli
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=wilayah
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=provinsi
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=kabkot
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=no_izin
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=tambahan_investasi
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=total_investasi
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=negara
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=rencana_total_investasi
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=proyek
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=tki
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=tka
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=nama_petugas
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=rencana_modal_tetap
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=keterangan_masalah
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=penjelasan_modal_tetap
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=no_telp
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=pma_pmdn
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=column_32
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: found column to delete=column_32
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: checking field=column_33
+DEBUG - 2025-12-31 06:35:35 --> deleteColumn: update result=success
+INFO - 2025-12-31 06:35:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn called with method: POST
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: dataset_id=15, column_name=column_33
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: application_id=1
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: schema_config=[{"index":0,"original_name":"No.","field_name":"no","display_label":"No.","type":"integer","required":false,"unique":false},{"index":1,"original_name":"ID Laporan","field_name":"id_laporan","display_label":"ID Laporan","type":"integer","required":false,"unique":false},{"index":2,"original_name":"ID Proyek","field_name":"id_proyek","display_label":"ID Proyek","type":"string","required":false,"unique":false},{"index":3,"original_name":"Periode Tahap","field_name":"periode_tahap","display_label":"Periode Tahap","type":"string","required":false,"unique":false},{"index":4,"original_name":"Sektor Utama","field_name":"sektor_utama","display_label":"Sektor Utama","type":"string","required":false,"unique":false},{"index":5,"original_name":"23 Sektor","field_name":"field_23_sektor","display_label":"23 Sektor","type":"string","required":false,"unique":false},{"index":6,"original_name":"Jenis Badan Usaha","field_name":"jenis_badan_usaha","display_label":"Jenis Badan Usaha","type":"string","required":false,"unique":false},{"index":7,"original_name":"Nama Perusahaan","field_name":"nama_perusahaan","display_label":"Nama Perusahaan","type":"string","required":false,"unique":false},{"index":8,"original_name":"Kecamatan","field_name":"kecamatan","display_label":"Kecamatan","type":"string","required":false,"unique":false},{"index":9,"original_name":"Email","field_name":"email","display_label":"Email","type":"string","required":false,"unique":false},{"index":10,"original_name":"Alamat","field_name":"alamat","display_label":"Alamat","type":"string","required":false,"unique":false},{"index":11,"original_name":"Cetak Lokasi","field_name":"cetak_lokasi","display_label":"Cetak Lokasi","type":"string","required":false,"unique":false},{"index":12,"original_name":"Sektor","field_name":"sektor","display_label":"Sektor","type":"string","required":false,"unique":false},{"index":13,"original_name":"Deskripsi KBLI","field_name":"deskripsi_kbli","display_label":"Deskripsi KBLI","type":"string","required":false,"unique":false},{"index":14,"original_name":"Wilayah","field_name":"wilayah","display_label":"Wilayah","type":"string","required":false,"unique":false},{"index":15,"original_name":"Provinsi","field_name":"provinsi","display_label":"Provinsi","type":"string","required":false,"unique":false},{"index":16,"original_name":"Kabkot","field_name":"kabkot","display_label":"Kabkot","type":"string","required":false,"unique":false},{"index":17,"original_name":"No Izin","field_name":"no_izin","display_label":"No Izin","type":"integer","required":false,"unique":false},{"index":18,"original_name":"Tambahan Investasi","field_name":"tambahan_investasi","display_label":"Tambahan Investasi","type":"integer","required":false,"unique":false},{"index":19,"original_name":"Total Investasi","field_name":"total_investasi","display_label":"Total Investasi","type":"integer","required":false,"unique":false},{"index":20,"original_name":"Negara","field_name":"negara","display_label":"Negara","type":"string","required":false,"unique":false},{"index":21,"original_name":"Rencana Total Investasi","field_name":"rencana_total_investasi","display_label":"Rencana Total Investasi","type":"integer","required":false,"unique":false},{"index":22,"original_name":"Proyek","field_name":"proyek","display_label":"Proyek","type":"integer","required":false,"unique":false},{"index":23,"original_name":"TKI","field_name":"tki","display_label":"TKI","type":"integer","required":false,"unique":false},{"index":24,"original_name":"TKA","field_name":"tka","display_label":"TKA","type":"integer","required":false,"unique":false},{"index":25,"original_name":"Nama Petugas","field_name":"nama_petugas","display_label":"Nama Petugas","type":"string","required":false,"unique":false},{"index":26,"original_name":"Rencana Modal Tetap","field_name":"rencana_modal_tetap","display_label":"Rencana Modal Tetap","type":"integer","required":false,"unique":false},{"index":27,"original_name":"Keterangan Masalah","field_name":"keterangan_masalah","display_label":"Keterangan Masalah","type":"string","required":false,"unique":false},{"index":28,"original_name":"Penjelasan Modal Tetap","field_name":"penjelasan_modal_tetap","display_label":"Penjelasan Modal Tetap","type":"string","required":false,"unique":false},{"index":29,"original_name":"No Telp","field_name":"no_telp","display_label":"No Telp","type":"integer","required":false,"unique":false},{"index":30,"original_name":"PMA\/PMDN","field_name":"pma_pmdn","display_label":"PMA\/PMDN","type":"string","required":false,"unique":false},{"index":32,"original_name":"Column_33","field_name":"column_33","display_label":"Column 33","type":"string","required":false,"unique":false}]
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=no
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=id_laporan
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=id_proyek
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=periode_tahap
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=sektor_utama
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=field_23_sektor
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=jenis_badan_usaha
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=nama_perusahaan
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=kecamatan
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=email
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=alamat
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=cetak_lokasi
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=sektor
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=deskripsi_kbli
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=wilayah
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=provinsi
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=kabkot
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=no_izin
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=tambahan_investasi
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=total_investasi
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=negara
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=rencana_total_investasi
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=proyek
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=tki
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=tka
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=nama_petugas
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=rencana_modal_tetap
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=keterangan_masalah
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=penjelasan_modal_tetap
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=no_telp
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=pma_pmdn
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: checking field=column_33
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: found column to delete=column_33
+DEBUG - 2025-12-31 06:35:40 --> deleteColumn: update result=success
+INFO - 2025-12-31 06:35:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:35:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:44:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:44:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:44:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:46:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:56:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:56:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:57:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 06:57:03 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 06:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 06:57:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 06:57:24 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:03:23 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:04:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:04:18 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:04:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:04:25 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:18:24 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:18:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:18:35 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:19:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:19:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:19:15 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:25:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:25:10 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:28:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:28:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:28:21 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:35:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:35:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:36:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:37:39 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:39:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:39:56 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:40:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:40:18 --> DatasetApiController::getFields error: Undefined array key "schema_definition"
+INFO - 2025-12-31 07:40:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:40:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:48:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-31 07:48:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-31 07:48:08 --> DatasetApiController::getFields error: Undefined array key "schema_definition"

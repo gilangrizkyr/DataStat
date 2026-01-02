@@ -177,7 +177,7 @@
 
         function loadTargetFields(datasetId) {
             $.ajax({
-                url: `<?= base_url('owner/datasets/get-fields/') ?>${datasetId}`,
+                url: `<?= base_url('api/dataset/fields/') ?>${datasetId}`,
                 method: 'GET',
                 dataType: 'json',
                 success: function(response) {

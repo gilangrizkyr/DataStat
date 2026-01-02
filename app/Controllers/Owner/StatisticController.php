@@ -124,6 +124,9 @@ class StatisticController extends BaseController
      */
     public function store()
     {
+        // Get posted data for conditional validation
+        $metricType = $this->request->getPost('metric_type');
+
         // Validasi input
         $rules = [
             'stat_name' => [
@@ -156,6 +159,16 @@ class StatisticController extends BaseController
                 ]
             ]
         ];
+
+        // Add target_field validation for metric types that require it
+        if (in_array($metricType, ['count', 'sum', 'average', 'min', 'max', 'percentage', 'ratio', 'growth', 'ranking'])) {
+            $rules['target_field'] = [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Field target harus dipilih untuk tipe metrik ini'
+                ]
+            ];
+        }
 
         if (!$this->validate($rules)) {
             return redirect()->back()

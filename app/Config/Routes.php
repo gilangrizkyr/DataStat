@@ -152,6 +152,7 @@ $routes->group('superadmin', ['filter' => 'superadmin', 'namespace' => 'App\Cont
 // ============================================================================
 // OWNER ROUTES (Owner Only - or Superadmin)
 // ============================================================================
+
 $routes->group('owner', ['filter' => 'owner', 'namespace' => 'App\Controllers\Owner'], function ($routes) {
 
     // Dashboard
@@ -243,7 +244,7 @@ $routes->group('owner', ['filter' => 'owner', 'namespace' => 'App\Controllers\Ow
         $routes->post('invite', 'UserManageController::sendInvite');
         $routes->get('manage-roles/(:num)', 'UserManageController::manageRoles/$1');
         $routes->post('manage-roles/(:num)', 'UserManageController::updateRole/$1');
-        $routes->delete('remove/(:num)', 'UserManageController::remove/$1');
+        $routes->post('remove/(:num)', 'UserManageController::remove/$1');
     });
 
     // Workspace Settings
@@ -294,7 +295,7 @@ $routes->group('viewer', ['filter' => 'viewer', 'namespace' => 'App\Controllers\
 // ============================================================================
 // API ROUTES (Optional - untuk AJAX/JSON responses)
 // ============================================================================
-$routes->group('api', ['namespace' => 'App\Controllers\Api'], function ($routes) {
+$routes->group('api', ['namespace' => 'App\Controllers\Api', 'filter' => 'auth'], function ($routes) {
 
     // Statistics API (for real-time updates)
     $routes->post('statistics/calculate', 'StatisticApiController::calculate');
