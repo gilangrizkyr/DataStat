@@ -46,7 +46,7 @@ class DashboardModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    
+
     protected $allowedFields    = [
         'application_id',
         'dashboard_name',
@@ -58,7 +58,8 @@ class DashboardModel extends Model
         'access_token',
         'created_by',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'deleted_at'
     ];
 
     protected $useTimestamps = false;
@@ -74,7 +75,7 @@ class DashboardModel extends Model
         'is_default'      => 'permit_empty|in_list[0,1]',
         'is_public'       => 'permit_empty|in_list[0,1]'
     ];
-    
+
     protected $validationMessages = [
         'application_id' => [
             'required' => 'Application ID harus diisi'
@@ -84,7 +85,7 @@ class DashboardModel extends Model
             'min_length' => 'Nama dashboard minimal 3 karakter'
         ]
     ];
-    
+
     protected $skipValidation = false;
     protected $allowCallbacks = true;
     protected $beforeInsert   = ['generateSlug', 'generateAccessToken'];
@@ -120,10 +121,10 @@ class DashboardModel extends Model
         return $this->select('dashboards.*, 
                              users.nama_lengkap as creator_name,
                              (SELECT COUNT(*) FROM dashboard_widgets WHERE dashboard_id = dashboards.id) as widget_count')
-                    ->join('users', 'users.id = dashboards.created_by')
-                    ->where('dashboards.application_id', $applicationId)
-                    ->where('dashboards.deleted_at', null)
-                    ->findAll();
+            ->join('users', 'users.id = dashboards.created_by')
+            ->where('dashboards.application_id', $applicationId)
+            ->where('dashboards.deleted_at', null)
+            ->findAll();
     }
 
     /**
@@ -132,9 +133,9 @@ class DashboardModel extends Model
     public function getDefault($applicationId)
     {
         return $this->where('application_id', $applicationId)
-                    ->where('is_default', 1)
-                    ->where('deleted_at', null)
-                    ->first();
+            ->where('is_default', 1)
+            ->where('deleted_at', null)
+            ->first();
     }
 
     /**
@@ -143,9 +144,9 @@ class DashboardModel extends Model
     public function getBySlug($slug, $applicationId)
     {
         return $this->where('dashboard_slug', $slug)
-                    ->where('application_id', $applicationId)
-                    ->where('deleted_at', null)
-                    ->first();
+            ->where('application_id', $applicationId)
+            ->where('deleted_at', null)
+            ->first();
     }
 
     /**
@@ -154,9 +155,9 @@ class DashboardModel extends Model
     public function getByAccessToken($token)
     {
         return $this->where('access_token', $token)
-                    ->where('is_public', 1)
-                    ->where('deleted_at', null)
-                    ->first();
+            ->where('is_public', 1)
+            ->where('deleted_at', null)
+            ->first();
     }
 
     /**
@@ -169,8 +170,8 @@ class DashboardModel extends Model
 
         // Unset semua default
         $this->where('application_id', $applicationId)
-             ->set(['is_default' => 0])
-             ->update();
+            ->set(['is_default' => 0])
+            ->update();
 
         // Set yang dipilih
         $this->update($dashboardId, ['is_default' => 1]);

@@ -138,7 +138,6 @@ class UserController extends BaseController
             ]);
 
             return redirect()->to('/superadmin/users')->with('success', 'User berhasil ditambahkan');
-
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Gagal: ' . $e->getMessage());
         }
@@ -153,7 +152,11 @@ class UserController extends BaseController
             return redirect()->to('/login');
         }
 
-        $user = $this->userModel->find($id);
+        $user = $this->userModel
+            ->select('users.*,
+                     (SELECT COUNT(*) FROM user_roles WHERE user_id = users.id) as role_count,
+                     (SELECT COUNT(*) FROM applications WHERE user_id = users.id AND deleted_at IS NULL) as app_count')
+            ->find($id);
 
         if (!$user) {
             return redirect()->to('/superadmin/users')->with('error', 'User tidak ditemukan');
@@ -210,7 +213,6 @@ class UserController extends BaseController
             ]);
 
             return redirect()->to('/superadmin/users')->with('success', 'User berhasil diupdate');
-
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Gagal: ' . $e->getMessage());
         }
@@ -284,7 +286,6 @@ class UserController extends BaseController
                 'message' => 'Status user berhasil diubah',
                 'new_status' => $newStatus
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
         }
@@ -322,7 +323,6 @@ class UserController extends BaseController
                 'message' => 'Password berhasil direset',
                 'new_password' => $newPassword
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
         }
@@ -361,7 +361,6 @@ class UserController extends BaseController
                 'success' => true,
                 'message' => 'User berhasil dihapus'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
         }

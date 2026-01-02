@@ -406,7 +406,7 @@ class DashboardManageController extends BaseController
 
         // Handle POST/AJAX request - perform deletion
         try {
-            $this->dashboardModel->update($id, ['deleted_at' => date('Y-m-d H:i:s')]);
+            $this->dashboardModel->delete($id);
 
             $this->logActivity('delete', 'dashboards', 'Owner delete dashboard: ' . $dashboard['dashboard_name'], ['dashboard_id' => $id]);
 

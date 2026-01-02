@@ -27,19 +27,23 @@ use App\Controllers\BaseController;
 use App\Models\Superadmin\UserModel;
 use App\Models\Superadmin\UserRoleModel;
 use App\Models\Superadmin\RoleModel;
+use App\Models\Owner\ApplicationModel;
+use App\Libraries\MailtrapEmail;
 
 class UserManageController extends BaseController
 {
     protected $userModel;
     protected $userRoleModel;
     protected $roleModel;
+    protected $applicationModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->userRoleModel = new UserRoleModel();
         $this->roleModel = new RoleModel();
-        helper(['form', 'url']);
+        $this->applicationModel = new ApplicationModel();
+        helper(['form', 'url', 'text']);
     }
 
     /**
@@ -109,6 +113,8 @@ class UserManageController extends BaseController
         try {
             $email = $this->request->getPost('email');
             $roleId = $this->request->getPost('role_id');
+            $message = $this->request->getPost('message');
+            $sendEmail = $this->request->getPost('send_email');
             $applicationId = session()->get('application_id');
 
             // Cek apakah user sudah terdaftar
@@ -139,16 +145,31 @@ class UserManageController extends BaseController
                 'created_at' => date('Y-m-d H:i:s')
             ]);
 
-            // TODO: Send email notification
+            // Send email notification if requested
+            if ($sendEmail) {
+                $emailResult = $this->sendInviteEmail($user, $roleId, $message);
+                if (!$emailResult) {
+                    log_message('error', 'Failed to send invitation email to: ' . $user['email']);
+                    session()->setFlashdata('email_debug', 'Email failed to send to: ' . $user['email']);
+                } else {
+                    log_message('info', 'Invitation email logged successfully to: ' . $user['email']);
+                    session()->setFlashdata('email_debug', 'Email logged successfully to: ' . $user['email']);
+                }
+            }
 
             $this->logActivity('invite', 'users', 'Owner invite user: ' . $email, [
                 'user_id' => $user['id'],
-                'role_id' => $roleId
+                'role_id' => $roleId,
+                'send_email' => $sendEmail
             ]);
 
-            return redirect()->to('/owner/users')
-                ->with('success', 'User berhasil ditambahkan ke workspace');
+            $successMessage = 'User berhasil ditambahkan ke workspace';
+            if ($sendEmail) {
+                $successMessage .= ' dan email invitation telah dikirim';
+            }
 
+            return redirect()->to('/owner/users')
+                ->with('success', $successMessage);
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Gagal: ' . $e->getMessage());
         }
@@ -178,6 +199,22 @@ class UserManageController extends BaseController
         if (!$userRole) {
             return redirect()->to('/owner/users')->with('error', 'User tidak ada di workspace ini');
         }
+
+        // Add joined_at to user data
+        $user['joined_at'] = $userRole['created_at'];
+
+        // Get current role details
+        $currentRole = $this->roleModel->find($userRole['role_id']);
+        if ($currentRole) {
+            $user['role_name'] = $currentRole['role_name'];
+            $user['role_label'] = $currentRole['role_label'];
+            $user['role_description'] = $currentRole['description'];
+        } else {
+            $user['role_name'] = 'unknown';
+            $user['role_label'] = 'Unknown Role';
+            $user['role_description'] = 'Role tidak ditemukan';
+        }
+        $user['role_id'] = $userRole['role_id'];
 
         $roles = $this->roleModel->whereIn('role_name', ['owner', 'viewer'])->findAll();
 
@@ -220,7 +257,6 @@ class UserManageController extends BaseController
                 'success' => true,
                 'message' => 'Role berhasil diupdate'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
@@ -262,13 +298,25 @@ class UserManageController extends BaseController
                 'success' => true,
                 'message' => 'User berhasil dihapus dari workspace'
             ]);
-
         } catch (\Exception $e) {
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Error: ' . $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     * Send invitation email
+     */
+    private function sendInviteEmail($user, $roleId, $message = null)
+    {
+        $role = $this->roleModel->find($roleId);
+        $application = $this->applicationModel->find(session()->get('application_id'));
+
+        $mailtrap = new MailtrapEmail();
+
+        return $mailtrap->sendInvitationEmail($user, $role['role_label'], $application['app_name'], $message);
     }
 
     /**

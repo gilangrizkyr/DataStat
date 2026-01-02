@@ -82,12 +82,12 @@
                                                     required>
                                                     <option value="">Pilih Role</option>
                                                     <?php foreach ($roles as $role): ?>
-                                                        <?php if ($role['name'] !== 'superadmin'): // Superadmin role shouldn't be assignable 
+                                                        <?php if ($role['role_name'] !== 'superadmin'): // Superadmin role shouldn't be assignable
                                                         ?>
                                                             <option value="<?= $role['id'] ?>"
                                                                 <?= $user['role_id'] == $role['id'] ? 'selected' : '' ?>
-                                                                <?= $role['name'] == 'owner' && $user['id'] == session()->get('user_id') ? 'disabled' : '' ?>>
-                                                                <?= esc($role['label']) ?> - <?= esc($role['description']) ?>
+                                                                <?= $role['role_name'] == 'owner' && $user['id'] == session()->get('user_id') ? 'disabled' : '' ?>>
+                                                                <?= esc($role['role_label']) ?> - <?= esc($role['description']) ?>
                                                             </option>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
